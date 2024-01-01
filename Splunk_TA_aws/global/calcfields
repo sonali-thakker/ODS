@@ -1,0 +1,2362 @@
+[
+{
+"name": "AvailabilityZone",
+"origName": "aws:billing : EVAL-AvailabilityZone",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing",
+"value": "if(isnull(AvailabilityZone), \"Unspecified\", AvailabilityZone)"
+},
+{
+"name": "LinkedAccount",
+"origName": "aws:billing : EVAL-LinkedAccount",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing",
+"value": "if(isnull(LinkedAccountName), if(isnull(LinkedAccountId), \"Unspecified\", LinkedAccountId), LinkedAccountName+\" (\" +LinkedAccountId + \")\")"
+},
+{
+"name": "ProductName",
+"origName": "aws:billing : EVAL-ProductName",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing",
+"value": "if(isnull(ProductName), if(isnull(ProductCode), \"Unspecified\", ProductCode), ProductName)"
+},
+{
+"name": "report_month",
+"origName": "aws:billing : EVAL-report_month",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing",
+"value": "strftime(_time, \"%Y-%m\")"
+},
+{
+"name": "S3KeyLastModified",
+"origName": "aws:billing : EVAL-S3KeyLastModified",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing",
+"value": "if(isnull(S3KeyLastModified),strftime(strptime(mvindex(split(replace(source,\"(\\d{2}):(\\d{2}):(\\d{2})\",\"\\1 \\2 \\3\"),\":\"),-1),\"%a, %d %b %Y %H %M %S GMT\"),\"%Y-%m-%dT%H:%M:%S.000Z\"),S3KeyLastModified)"
+},
+{
+"name": "app",
+"origName": "aws:cloudfront:accesslogs : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "\"CloudFront\""
+},
+{
+"name": "bytes",
+"origName": "aws:cloudfront:accesslogs : EVAL-bytes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "sc_bytes + cs_bytes"
+},
+{
+"name": "bytes_in",
+"origName": "aws:cloudfront:accesslogs : EVAL-bytes_in",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_bytes!=\"-\" AND isnotnull(cs_bytes), cs_bytes, null())"
+},
+{
+"name": "bytes_out",
+"origName": "aws:cloudfront:accesslogs : EVAL-bytes_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(sc_bytes!=\"-\" AND isnotnull(sc_bytes), sc_bytes, null())"
+},
+{
+"name": "cached",
+"origName": "aws:cloudfront:accesslogs : EVAL-cached",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "case(sc_status=\"403\", null(), x_edge_result_type in (\"Hit\", \"RefreshHit\", \"OriginShieldHit\"), \"true\", true(), \"false\")"
+},
+{
+"name": "category",
+"origName": "aws:cloudfront:accesslogs : EVAL-category",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "\"AWS CloudFront\""
+},
+{
+"name": "client_ip",
+"origName": "aws:cloudfront:accesslogs : EVAL-client_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(c_ip!=\"-\" AND isnotnull(c_ip), c_ip, null())"
+},
+{
+"name": "cookie",
+"origName": "aws:cloudfront:accesslogs : EVAL-cookie",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_cookie!=\"-\" AND isnotnull(cs_cookie), cs_cookie, null())"
+},
+{
+"name": "cs_uri_stem",
+"origName": "aws:cloudfront:accesslogs : EVAL-cs_uri_stem",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "urldecode(urldecode(cs_uri_stem))"
+},
+{
+"name": "dest",
+"origName": "aws:cloudfront:accesslogs : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(isnotnull(x_host_header) AND x_host_header!=\"-\", replace(x_host_header,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "duration",
+"origName": "aws:cloudfront:accesslogs : EVAL-duration",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(time_taken!=\"-\" AND time_taken!=\"-1\" AND isnotnull(time_taken), time_taken, null())"
+},
+{
+"name": "http_content_type",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_content_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(sc_content_type!=\"-\" AND isnotnull(sc_content_type), sc_content_type, null())"
+},
+{
+"name": "http_method",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_method",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_method!=\"-\" AND isnotnull(cs_method), cs_method, null())"
+},
+{
+"name": "http_referrer",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_referrer",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_referer!=\"-\" AND isnotnull(cs_referer), cs_referer, null())"
+},
+{
+"name": "http_referrer_domain",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_referrer_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(isnotnull(cs_referer) AND cs_referer!=\"-\", replace(cs_referer,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "http_user_agent",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_user_agent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_user_agent!=\"-\" AND isnotnull(cs_user_agent), cs_user_agent, null())"
+},
+{
+"name": "http_user_agent_length",
+"origName": "aws:cloudfront:accesslogs : EVAL-http_user_agent_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(isnotnull(cs_user_agent) AND cs_user_agent!=\"\", len(cs_user_agent), 0)"
+},
+{
+"name": "response_time",
+"origName": "aws:cloudfront:accesslogs : EVAL-response_time",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(time_taken!=\"-\" AND time_taken!=\"-1\" AND isnotnull(time_taken), time_taken, null())"
+},
+{
+"name": "src",
+"origName": "aws:cloudfront:accesslogs : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(c_ip!=\"-\" AND isnotnull(c_ip), c_ip, null())"
+},
+{
+"name": "src_ip",
+"origName": "aws:cloudfront:accesslogs : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(c_ip!=\"-\" AND isnotnull(c_ip), c_ip, null())"
+},
+{
+"name": "src_port",
+"origName": "aws:cloudfront:accesslogs : EVAL-src_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(c_port!=\"-\" AND isnotnull(c_port), c_port, null())"
+},
+{
+"name": "status",
+"origName": "aws:cloudfront:accesslogs : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(sc_status!=\"-\" AND isnotnull(sc_status), sc_status, null())"
+},
+{
+"name": "time_taken",
+"origName": "aws:cloudfront:accesslogs : EVAL-time_taken",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "time_taken*1000"
+},
+{
+"name": "uri_path",
+"origName": "aws:cloudfront:accesslogs : EVAL-uri_path",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_uri_stem!=\"-\" AND isnotnull(cs_uri_stem), cs_uri_stem, null())"
+},
+{
+"name": "uri_query",
+"origName": "aws:cloudfront:accesslogs : EVAL-uri_query",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(cs_uri_query!=\"-\" AND isnotnull(cs_uri_query), cs_uri_query, null())"
+},
+{
+"name": "url",
+"origName": "aws:cloudfront:accesslogs : EVAL-url",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(isnotnull(ssl_protocol) AND ssl_protocol!=\"\", \"https://\", \"http://\"). \"\" .x_host_header. \"\" .if(cs_uri_stem!=\"-\", cs_uri_stem, \"\"). \"\" .if(cs_uri_query!=\"-\", cs_uri_query, \"\")"
+},
+{
+"name": "url_domain",
+"origName": "aws:cloudfront:accesslogs : EVAL-url_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "if(isnotnull(x_host_header) AND x_host_header!=\"-\", replace(x_host_header,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "url_length",
+"origName": "aws:cloudfront:accesslogs : EVAL-url_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "len(if(isnotnull(ssl_protocol) AND ssl_protocol!=\"\", \"https://\", \"http://\"). \"\" .x_host_header. \"\" .if(cs_uri_stem!=\"-\", cs_uri_stem, \"\"). \"\" .if(cs_uri_query!=\"-\", cs_uri_query, \"\"))"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudfront:accesslogs : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"value": "\"AWS CloudFront\""
+},
+{
+"name": "authentication_method",
+"origName": "aws:cloudtrail : EVAL-authentication_method",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case((('additionalEventData.MFAUsed'=\"Yes\" AND eventName=\"ConsoleLogin\") OR eventName=\"CheckMfa\"), \"MFA\", ('additionalEventData.MFAUsed'=\"No\" AND eventName=\"ConsoleLogin\") OR ((eventName=\"AssumeRole\" OR eventName=\"ListAliases\") AND 'userIdentity.type'=\"AssumedRole\" AND 'userIdentity.sessionContext.attributes.mfaAuthenticated'=\"false\"), \"SFA\")"
+},
+{
+"name": "aws_account_id",
+"origName": "aws:cloudtrail : EVAL-aws_account_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "if('userIdentity.type'=\"AWSAccount\" OR 'userIdentity.type'=\"AWSService\", recipientAccountId, 'userIdentity.accountId')"
+},
+{
+"name": "dest",
+"origName": "aws:cloudtrail : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"PutBucketAcl\",'requestParameters.Host',\n                 eventName=\"GetBucketEncryption\",'requestParameters.host{}',\n                 eventName=\"RunInstances\", coalesce('responseElements.instancesSet.items{}.instanceId', 'eventSource'),\n                 eventName=\"StartInstances\", coalesce('requestParameters.instancesSet.items{}.instanceId', 'eventSource'),\n                 eventName=\"StopInstances\" OR eventName=\"TerminateInstances\" OR eventName=\"RebootInstances\",'requestParameters.instancesSet.items{}.instanceId',\n                 like(eventName, \"%Volume\"),coalesce('requestParameters.instanceId', 'eventSource'),\n                 like(eventName, \"%Bucket\"),'requestParameters.host{}',\n                 like(eventName, \"Put%\"),coalesce('requestParameters.host{}', 'requestParameters.Host'),\n                 eventName=\"CreateUser\" OR eventName=\"UpdateUser\" OR eventName=\"DeleteUser\",'eventSource',\n                 eventName=\"DeleteLoginProfile\",'requestParameters.userName',\n                 eventName=\"ConsoleLogin\" OR eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\" OR eventName=\"CheckMfa\" OR eventName=\"ListAliases\",coalesce('additionalEventData.LoginTo', 'eventSource'),\n                 eventName=\"DeleteSecurityGroup\", 'eventSource',\n                 true(), eventSource)"
+},
+{
+"name": "dest_ip_range",
+"origName": "aws:cloudtrail : EVAL-dest_ip_range",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(like(eventName, \"%SecurityGroupEgress\"), 'requestParameters.ipPermissions.items{}.ipRanges.items{}.cidrIp',\n                         (like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"true\"),  'requestParameters.cidrBlock')"
+},
+{
+"name": "dest_port_range",
+"origName": "aws:cloudtrail : EVAL-dest_port_range",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(like(eventName, \"%SecurityGroupEgress%\"), mvappend('requestParameters.ipPermissions.items{}.toPort','requestParameters.ipPermissions.items{}.fromPort'),\n                            (like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"true\"), mvappend('requestParameters.portRange.from','requestParameters.portRange.to'))"
+},
+{
+"name": "direction",
+"origName": "aws:cloudtrail : EVAL-direction",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(((like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"false\") OR like(eventName, \"%SecurityGroupIngress\")), \"Inbound\",\n                      ((like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"true\") OR like(eventName, \"%SecurityGroupEgress\")), \"Outbound\")"
+},
+{
+"name": "errorCode",
+"origName": "aws:cloudtrail : EVAL-errorCode",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('errorCode', if(like('responseElements.ConsoleLogin', \"Failure\"), \"failure\", \"success\"), \"success\")"
+},
+{
+"name": "msg",
+"origName": "aws:cloudtrail : EVAL-msg",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('errorCode',\"success\")"
+},
+{
+"name": "object",
+"origName": "aws:cloudtrail : EVAL-object",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(like(eventName, \"%Instances\"),if((eventName=\"RunInstances\"),coalesce('responseElements.instancesSet.items{}.instanceId', 'eventSource'),coalesce('requestParameters.instancesSet.items{}.instanceId', 'eventSource')),\n                   like(eventName, \"%SecurityGroup%\"),coalesce('responseElements.groupId', 'requestParameters.groupId'),\n                   like(eventName, \"%Volume\"),if((eventName=\"CreateVolume\"),'responseElements.volumeId', 'requestParameters.volumeId'),\n                   like(eventName, \"%NetworkAcl%\"),coalesce('requestParameters.networkAclId', 'responseElements.networkAcl.networkAclId'),\n                   (like(eventName, \"%Bucket%\") OR eventName=\"PutObject\"), 'requestParameters.bucketName',\n                   eventName=\"CreateUser\",'responseElements.user.userName',\n                   eventName=\"DeleteUser\" OR eventName=\"DeleteLoginProfile\",'requestParameters.userName',\n                   eventName=\"UpdateUser\",'requestParameters.newUserName',\n                   eventName=\"CreateLoginProfile\",'responseElements.loginProfile.userName',\n                   eventName=\"CreateAccessKey\", coalesce('responseElements.accessKey.userName',replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\")),\n                   eventName=\"CreateVirtualMFADevice\",mvindex(split('responseElements.virtualMFADevice.serialNumber', \"/\"), 1),\n                   eventName=\"ListAccessKeys\" OR eventName=\"GetUser\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\",replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"),\n                   eventName=\"CreateChangeSet\",'requestParameters.stackName',\n                   eventName=\"CreateDeliveryStream\",'requestParameters.deliveryStreamName',\n                   eventName=\"CreateKeyspace\",'requestParameters.keyspaceName',\n                   eventName=\"CreateLoadBalancerListeners\",'requestParameters.loadBalancerName',\n                   eventName=\"CreateLoadBalancerPolicy\",'requestParameters.loadBalancerName',\n                   eventName=\"CreateQueue\",'requestParameters.queueName',\n                   eventName=\"CreateTable\",'requestParameters.tableName',\n                   eventName=\"CreateFunction20150331\",'requestParameters.functionName',\n                   eventName=\"CreateLogGroup\",'requestParameters.logGroupName',\n                   eventName=\"CreateLogStream\",'requestParameters.logStreamName',\n                   eventName=\"CreateNetworkInterface\",'responseElements.networkInterface.networkInterfaceId',\n                   eventName=\"DeleteNetworkInterface\",'requestParameters.networkInterfaceId',\n                   eventName=\"ListSigningCertificates\",replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"))"
+},
+{
+"name": "object_attrs",
+"origName": "aws:cloudtrail : EVAL-object_attrs",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"CreateKeyspace\",replace('requestParameters.rawQuery', \".*(REPLICATION).*class.*:\\s*['\\\"](.*)['\\\"].*\", \"\\1=\\2\"),\n                        eventName IN (\"CreateUser\",\"DeleteUser\",\"ListSigningCertificates\",\"ListAccessKeys\",\"GetUser\",\"GetAccountSummary\", \"ListAccountAliases\",\"ListRoles\"),\"user\",\n                        eventName=\"CreateLoginProfile\",\"passwordResetRequired=\". 'responseElements.loginProfile.passwordResetRequired',\n                        eventName=\"UpdateUser\", \"userName=\". 'requestParameters.userName',\n                        (eventName=\"CreateAccessKey\" AND 'errorCode'=\"AccessDenied\"), \"user\",\n                        eventName=\"CreateAccessKey\",\"status=\". 'responseElements.accessKey.status',\n                        eventName=\"CreateVirtualMFADevice\", \"virtualMFADevice\",\n                        eventName=\"CreateNetworkAcl\", if('responseElements.networkAcl.isDefault'== \"false\", \"non-default\", \"default\"),\n                        eventName=\"CreateNetworkAclEntry\", \"ruleAction=\".'requestParameters.ruleAction',\n                        eventName=\"DeleteNetworkAclEntry\", \"ruleNumber=\".'requestParameters.ruleNumber',\n                        eventName=\"ReplaceNetworkAclAssociation\", \"associationId=\".'responseElements.newAssociationId',\n                        like(eventName, \"RevokeSecurityGroup%\") OR like(eventName, \"AuthorizeSecurityGroup%\"),\"ipPermissions\",\n                        eventName=\"DetachVolume\",\"device=\".'responseElements.device',\n                        eventName=\"AttachVolume\",\"device=\".'requestParameters.device'.\", deleteOnTermination=\".'requestParameters.deleteOnTermination',\n                        eventName=\"CreateVolume\", \"volumeType=\".'responseElements.volumeType',\n                        eventName IN (\"StartInstances\", \"StopInstances\", \"TerminateInstances\", \"RebootInstances\"), \"EC2\",\n                        like(eventName, \"%Volume\"), \"volume\",\n                        eventName IN (\"DeleteBucket\", \"CreateBucket\"), \"bucket\",\n                        eventName=\"RunInstances\" AND responseElements=\"\", \"subnetId=\".'requestParameters.subnetId'.\", iamInstanceProfile=\".'requestParameters.iamInstanceProfile.name',\n                        eventName=\"RunInstances\", \"macAddress=\".mvjoin('responseElements.instancesSet.items{}.networkInterfaceSet.items{}.macAddress',\", macAddress=\").\", \".\"privateIpAddress=\".mvjoin('responseElements.instancesSet.items{}.networkInterfaceSet.items{}.privateIpAddress',\", privateIpAddress=\"),\n                        eventName=\"PutBucketPublicAccessBlock\", \"RestrictPublicBuckets=\".'requestParameters.PublicAccessBlockConfiguration.RestrictPublicBuckets'.\", BlockPublicPolicy=\".'requestParameters.PublicAccessBlockConfiguration.BlockPublicPolicy'.\", BlockPublicAcls=\".'requestParameters.PublicAccessBlockConfiguration.BlockPublicAcls'.\", IgnorePublicAcls=\".'requestParameters.PublicAccessBlockConfiguration.IgnorePublicAcls',\n                        eventName=\"PutBucketAcl\",\"AccessControlList\",\n                        eventName=\"CreateChangeSet\",\"changeSetName=\".'requestParameters.changeSetName',\n                        eventName=\"CreateDeliveryStream\",\"SplunkDestinationConfiguration\",\n                        eventName=\"CreateLoadBalancerListeners\",\"listeners\",\n                        eventName=\"CreateQueue\",\"message_queue\",\n                        eventName=\"CreateTable\",\"keyspaceName=\".'requestParameters.keyspaceName',\n                        eventName=\"CreateLoadBalancerPolicy\",\"policyName=\".'requestParameters.policyName',\n                        eventName=\"CreateFunction20150331\",\"lambda-console:blueprint\".\",\".'requestParameters.tags.lambda-console:blueprint',\n                        eventName=\"CreateLogGroup\",\"log_group\",\n                        eventName=\"CreateLogStream\",\"logGroupName=\".'requestParameters.logGroupName',\n                        eventName=\"GetBucketEncryption\",\"bucket\",\n                        eventName=\"PutObject\", \"x-amz-storage-class=\".'requestParameters.x-amz-storage-class',\n                        eventName=\"DeleteNetworkAcl\", \"ACL\",\n                        eventName=\"ReplaceNetworkAclEntry\",\"ruleNumber=\".'requestParameters.ruleNumber'.\", egress=\".'requestParameters.egress'.\", ruleAction=\".'requestParameters.ruleAction',\n                        eventName=\"CreateSecurityGroup\", \"groupName=\".'requestParameters.groupName',\n                        eventName=\"DeleteSecurityGroup\", \"security_group\",\n                        eventName=\"ListAliases\",\"alias\",\n                        eventName=\"DeleteNetworkInterface\", \"network_interface\",\n                        eventName=\"CreateNetworkInterface\", \"description=\".'responseElements.networkInterface.description'.\", macAddress=\".'responseElements.networkInterface.macAddress'.\", privateIpAddress=\".'responseElements.networkInterface.privateIpAddress')"
+},
+{
+"name": "object_id",
+"origName": "aws:cloudtrail : EVAL-object_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"RunInstances\",'responseElements.instancesSet.items{}.instanceId',\n                      like(eventName, \"%Instances\"),coalesce('requestParameters.instancesSet.items{}.instanceId','eventSource'),\n                      like(eventName, \"%SecurityGroup%\"),coalesce('responseElements.groupId', 'requestParameters.groupId'),\n                      like(eventName, \"%Volume\"), if((eventName=\"CreateVolume\"), 'responseElements.volumeId', 'requestParameters.volumeId'),\n                      like(eventName, \"%NetworkAcl%\"), coalesce('requestParameters.networkAclId', 'responseElements.networkAcl.networkAclId'),\n                      (like(eventName, \"%Bucket%\") OR eventName=\"PutObject\"),'requestParameters.bucketName',\n                      eventName=\"CreateUser\", 'responseElements.user.userId',\n                      eventName=\"DeleteUser\" OR eventName=\"DeleteLoginProfile\", 'requestParameters.userName',\n                      eventName=\"CreateLoginProfile\", 'responseElements.loginProfile.userName',\n                      eventName=\"UpdateUser\", 'requestParameters.newUserName',\n                      eventName=\"CreateAccessKey\", coalesce('responseElements.accessKey.accessKeyId',replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\")),\n                      eventName=\"CreateVirtualMFADevice\", mvindex(split('responseElements.virtualMFADevice.serialNumber', \"/\"), 1),\n                      eventName=\"ListAccessKeys\" OR eventName=\"GetUser\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\", replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"),\n                      eventName=\"CreateChangeSet\",'requestParameters.stackName',\n                      eventName=\"CreateDeliveryStream\",'requestParameters.deliveryStreamName',\n                      eventName=\"CreateKeyspace\",'requestParameters.keyspaceName',\n                      eventName=\"CreateLoadBalancerListeners\",'requestParameters.loadBalancerName',\n                      eventName=\"CreateLoadBalancerPolicy\",'requestParameters.loadBalancerName',\n                      eventName=\"CreateQueue\",'requestParameters.queueName',\n                      eventName=\"CreateTable\",'requestParameters.tableName',\n                      eventName=\"CreateFunction20150331\",'requestParameters.functionName',\n                      eventName=\"CreateLogGroup\",'requestParameters.logGroupName',\n                      eventName=\"CreateLogStream\",'requestParameters.logStreamName',\n                      eventName=\"CreateNetworkInterface\",'responseElements.networkInterface.networkInterfaceId',\n                      eventName=\"DeleteNetworkInterface\",'requestParameters.networkInterfaceId',\n                      eventName=\"ListSigningCertificates\",replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"))"
+},
+{
+"name": "protocol",
+"origName": "aws:cloudtrail : EVAL-protocol",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "if(like(eventName, \"%SecurityGroup%\"), 'requestParameters.ipPermissions.items{}.ipProtocol', null())"
+},
+{
+"name": "protocol_code",
+"origName": "aws:cloudtrail : EVAL-protocol_code",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "if(like(eventName, \"%NetworkAcl%\"), 'requestParameters.aclProtocol', null())"
+},
+{
+"name": "rule_action",
+"origName": "aws:cloudtrail : EVAL-rule_action",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('responseElements.networkAcl.entrySet.items{}.ruleAction','requestParameters.ruleAction')"
+},
+{
+"name": "src_ip_range",
+"origName": "aws:cloudtrail : EVAL-src_ip_range",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(like(eventName, \"%SecurityGroupIngress\"), 'requestParameters.ipPermissions.items{}.ipRanges.items{}.cidrIp',(like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"false\"),  'requestParameters.cidrBlock')"
+},
+{
+"name": "src_port_range",
+"origName": "aws:cloudtrail : EVAL-src_port_range",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(like(eventName, \"%SecurityGroupIngress%\"), mvappend('requestParameters.ipPermissions.items{}.toPort','requestParameters.ipPermissions.items{}.fromPort'),(like(eventName, \"%NetworkAcl%\") AND 'requestParameters.egress'=\"false\"), mvappend('requestParameters.portRange.from','requestParameters.portRange.to'))"
+},
+{
+"name": "src_user",
+"origName": "aws:cloudtrail : EVAL-src_user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"PutBucketAcl\",'userIdentity.userName',\n                    eventName IN(\"CreateLoadBalancerListeners\", \"GetBucketEncryption\", \"CreateLogStream\", \"CreateLogGroup\", \"CreateLoadBalancerPolicy\"),'userIdentity.sessionContext.sessionIssuer.userName',\n                    eventName IN(\"CreateUser\", \"CreateLoginProfile\", \"DeleteNetworkInterface\"), mvindex(split('userIdentity.principalId', \":\"), 1),\n                    eventName=\"DeleteLoginProfile\",'requestParameters.userName',\n                    eventName=\"CreateVirtualMFADevice\",'userIdentity.userName',\n                    eventName=\"CreateNetworkInterface\",'userIdentity.sessionContext.sessionIssuer.userName',\n                    like(eventName, \"AssumeRole%\"), coalesce('userIdentity.userName', 'requestParameters.sourceIdentity', 'userIdentity.sessionContext.sessionIssuer.userName'),\n                    (eventName=\"ConsoleLogin\" AND  isnotnull('additionalEventData.LoginTo')), null(),\n                    eventName=\"ConsoleLogin\" AND isnull('additionalEventData.LoginTo'), mvindex(split('userIdentity.principalId', \":\"), 1),\n                    eventName IN(\"ListAliases\",\"ListRoles\"),mvindex(split('userIdentity.arn', \"/\"), -1),\n                    like(eventName, \"%Instances\") OR like(eventName, \"%Volume\") OR like(eventName,\"Put%\") OR like(eventName,\"%Bucket\"),coalesce('userIdentity.userName', 'userIdentity.sessionContext.sessionIssuer.userName'),\n                    true(),'userIdentity.userName')"
+},
+{
+"name": "src_user_id",
+"origName": "aws:cloudtrail : EVAL-src_user_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\" OR eventName=\"ListAliases\", if((mvcount(split('userIdentity.principalId', \":\")) == 1)\n                        OR (mvcount(split('userIdentity.principalId', \":\")) == 2), mvindex(split('userIdentity.principalId', \":\"), 0),null()),\n                        eventName=\"AssumeRole\" AND 'userIdentity.type'=\"IAMUser\",mvindex(split('userIdentity.principalId', \":\"), 0),\n                        eventName=\"AssumeRole\" AND 'userIdentity.type'=\"AssumedRole\",mvindex(split('userIdentity.sessionContext.sessionIssuer.principalId', \":\"), 0),\n                        eventName=\"ConsoleLogin\" AND 'userIdentity.type'=\"AssumedRole\" AND isnull('additionalEventData.LoginTo'), mvindex(split('userIdentity.principalId', \":\"), 0),\n                        like(eventName,\"%User\") AND 'userIdentity.type'!=\"AWSService\",'userIdentity.principalId')"
+},
+{
+"name": "src_user_name",
+"origName": "aws:cloudtrail : EVAL-src_user_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case((eventName=\"DeleteUser\" OR eventName=\"UpdateUser\" OR eventName=\"ListSigningCertificates\" OR eventName=\"CreateAccessKey\" OR eventName=\"ListAccessKeys\" OR eventName=\"CreateVirtualMFADevice\" OR eventName=\"GetUser\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\"), 'userIdentity.userName',\n                           eventName IN(\"ListAliases\",\"ListRoles\"),mvindex(split('userIdentity.arn', \"/\"), -1),\n                           eventName=\"CreateLoginProfile\" OR eventName=\"CreateUser\", mvindex(split('userIdentity.principalId', \":\"), 1))"
+},
+{
+"name": "src_user_role",
+"origName": "aws:cloudtrail : EVAL-src_user_role",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "if((eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\") AND 'userIdentity.type'=\"AssumedRole\", 'userIdentity.arn', null())"
+},
+{
+"name": "src_user_type",
+"origName": "aws:cloudtrail : EVAL-src_user_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case((eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\" or eventName=\"ListAliases\" OR eventName=\"ListRoles\" OR eventName=\"CreateLoginProfile\" OR like(eventName, \"%User\") OR eventName=\"ListSigningCertificates\" OR eventName=\"CreateAccessKey\" OR eventName=\"ListAccessKeys\" OR eventName=\"CreateVirtualMFADevice\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\" OR eventName=\"DeleteNetworkInterface\") AND 'userIdentity.type'!=\"AWSService\",'userIdentity.type',\n                     (eventType=\"AwsConsoleSignIn\" AND 'userIdentity.type'=\"AssumedRole\" AND isnull('additionalEventData.LoginTo')),'userIdentity.type')"
+},
+{
+"name": "user",
+"origName": "aws:cloudtrail : EVAL-user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"PutBucketAcl\",'userIdentity.userName',\n                 eventName IN(\"CreateLoadBalancerListeners\",\"CreateLoadBalancerPolicy\",\"CreateLogGroup\",\"CreateLogStream\",\"GetBucketEncryption\"),'userIdentity.sessionContext.sessionIssuer.userName',\n                 eventName=\"CreateLoginProfile\",'responseElements.loginProfile.userName',\n                 eventName=\"CreateUser\",'responseElements.user.userName',\n                 (eventName=\"DeleteUser\" OR  eventName=\"DeleteLoginProfile\"),'requestParameters.userName',\n                 eventName=\"UpdateUser\",'requestParameters.newUserName',\n                 eventName=\"CreateAccessKey\",coalesce('responseElements.accessKey.userName',replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\")),\n                 (eventName=\"ListSigningCertificates\" OR eventName=\"ListAccessKeys\" OR eventName=\"GetUser\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\" OR eventName=\"ListSigningCertificates\"),replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"),\n                 eventName=\"CreateVirtualMFADevice\",'userIdentity.userName',\n                 eventName=\"CreateNetworkInterface\" OR eventName=\"DeleteNetworkInterface\",'userIdentity.sessionContext.sessionIssuer.userName',\n                 eventName=\"AssumeRole\" AND 'userIdentity.type'=\"AssumedRole\",mvindex(split('requestParameters.roleArn', \"/\"), -1),\n                 eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\",mvindex(split('responseElements.assumedRoleUser.arn',\"/\"), -1),\n                 eventName=\"ConsoleLogin\" AND 'userIdentity.type'=\"AssumedRole\" AND isnotnull('additionalEventData.LoginTo'), coalesce(mvindex(split('userIdentity.principalId', \":\"), 1), 'userIdentity.userName'),\n                 eventType=\"AwsConsoleSignIn\" OR eventName IN(\"ListAliases\",\"ListRoles\"),coalesce('userIdentity.userName','userIdentity.sessionContext.sessionIssuer.userName'),\n                 like(eventName, \"%Instances\") OR like(eventName, \"%Volume\") OR like(eventName,\"Put%\") OR like(eventName,\"%Bucket\"),coalesce('userIdentity.userName','userIdentity.sessionContext.sessionIssuer.userName'),\n                 true(),'userIdentity.userName')"
+},
+{
+"name": "user_agent",
+"origName": "aws:cloudtrail : EVAL-user_agent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce(userAgent,'userAgent{}')"
+},
+{
+"name": "user_arn",
+"origName": "aws:cloudtrail : EVAL-user_arn",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('userIdentity.arn', 'requestParameters.roleArn')"
+},
+{
+"name": "user_id",
+"origName": "aws:cloudtrail : EVAL-user_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case((eventName=\"ConsoleLogin\" AND 'userIdentity.type'=\"IAMUser\") OR eventName=\"CheckMfa\",coalesce(mvindex(split('userIdentity.principalId', \":\"), 0), 'userIdentity.accountId'),\n                ((eventName=\"ConsoleLogin\" OR eventName=\"ListAliases\" OR eventName=\"ListRoles\" OR eventName=\"DeleteNetworkInterface\") AND 'userIdentity.type'=\"AssumedRole\"), coalesce(mvindex(split('userIdentity.sessionContext.sessionIssuer.principalId', \":\"), 0), mvindex(split('userIdentity.principalId', \":\"), 0)),\n                eventName=\"CreateUser\", 'responseElements.user.userId',\n                eventName=\"DeleteUser\" OR eventName=\"UpdateUser\", 'requestParameters.userName',\n                eventType=\"AwsApiCall\",mvindex(split('responseElements.assumedRoleUser.assumedRoleId', \":\"), 0),\n                true(), 'userIdentity.userName')"
+},
+{
+"name": "user_name",
+"origName": "aws:cloudtrail : EVAL-user_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case(eventName=\"ListRoles\",mvindex(split('userIdentity.principalId', \":\"), 0),\n                     eventName=\"CreateLoginProfile\", 'responseElements.loginProfile.userName',\n                     eventName=\"CreateUser\",'responseElements.user.userName',\n                     (eventName=\"DeleteUser\" OR  eventName=\"DeleteLoginProfile\"),'requestParameters.userName',\n                     eventName=\"UpdateUser\",'requestParameters.newUserName',\n                     eventName=\"CreateAccessKey\",coalesce('responseElements.accessKey.userName',replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\")),\n                     (eventName=\"ListSigningCertificates\" OR eventName=\"ListAccessKeys\" OR eventName=\"GetUser\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\" OR eventName=\"ListSigningCertificates\"),replace(errorMessage, \".*resource\\s*:\\s*(?:user\\s*)?(.*)\",\"\\1\"),\n                     eventName=\"CreateVirtualMFADevice\",'userIdentity.userName',\n                     true(),coalesce('userIdentity.userName','userIdentity.sessionContext.sessionIssuer.userName',if(isnull('userIdentity.arn'),mvindex(split(mvindex(split('requestParameters.roleArn',\":\"), -1), \"/\"), -1), mvindex(split(mvindex(split('userIdentity.arn',\":\"), -1), \"/\"), -1))))"
+},
+{
+"name": "user_role",
+"origName": "aws:cloudtrail : EVAL-user_role",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "if(eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\", case('userIdentity.type'=\"AssumedRole\", 'requestParameters.roleArn', 'userIdentity.type'!=\"AWSService\", 'responseElements.assumedRoleUser.arn', 'userIdentity.type'=\"AWSService\", null()), null())"
+},
+{
+"name": "user_type",
+"origName": "aws:cloudtrail : EVAL-user_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "case((eventName=\"CreateLoginProfile\" OR like(eventName, \"%User\") OR eventName=\"ListSigningCertificates\" OR eventName=\"CreateAccessKey\" OR eventName=\"ListAccessKeys\" OR eventName=\"CreateVirtualMFADevice\" OR eventName=\"GetAccountSummary\" OR eventName=\"ListAccountAliases\"), null(),\n                      (eventName=\"ConsoleLogin\" AND 'userIdentity.type'=\"AssumedRole\" AND isnull('additionalEventData.LoginTo')), 'userIdentity.sessionContext.sessionIssuer.type',\n                      eventType=\"AwsConsoleSignIn\" , 'userIdentity.type',\n                      like(eventName, \"%Instances\") OR like(eventName, \"%Volume\") OR like(eventName,\"Put%\") OR like(eventName,\"%Bucket\"), 'userIdentity.type',\n                      eventName IN(\"ListAliases\", \"ListRoles\", \"DeleteNetworkInterface\"),'userIdentity.sessionContext.sessionIssuer.type',\n                      like(eventName, \"AssumeRole%\"),mvjoin(coalesce('resources{}.type',mvindex(split('responseElements.assumedRoleUser.arn', \"/\"), 1)), \",\"),\n                      true(),'userIdentity.type')"
+},
+{
+"name": "userName",
+"origName": "aws:cloudtrail : EVAL-userName",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('userIdentity.userName', 'requestParameters.sourceIdentity','userIdentity.sessionContext.sessionIssuer.userName', if(isnull('userIdentity.arn'), mvindex(split(mvindex(split('requestParameters.roleArn',\":\"), -1), \"/\"), -1), mvindex(split(mvindex(split('userIdentity.arn',\":\"), -1), \"/\"), -1)))"
+},
+{
+"name": "vendor_account",
+"origName": "aws:cloudtrail : EVAL-vendor_account",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "coalesce('userIdentity.accountId', 'recipientAccountId')"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudtrail : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"value": "\"AWS CloudTrail\""
+},
+{
+"name": "5xx_codes",
+"origName": "aws:cloudwatch : EVAL-5xx_codes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"HTTPCode_ELB_5XX\", Sum)"
+},
+{
+"name": "Average",
+"origName": "aws:cloudwatch : EVAL-Average",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(Average==\"\", 0, Average!=\"\", Average)"
+},
+{
+"name": "bytes_in",
+"origName": "aws:cloudwatch : EVAL-bytes_in",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkIn\", Sum)"
+},
+{
+"name": "bytes_mem_free",
+"origName": "aws:cloudwatch : EVAL-bytes_mem_free",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"FreeableMemory\", Sum)"
+},
+{
+"name": "bytes_out",
+"origName": "aws:cloudwatch : EVAL-bytes_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkOut\", Sum)"
+},
+{
+"name": "bytes_read_latency",
+"origName": "aws:cloudwatch : EVAL-bytes_read_latency",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"ReadLatency\", Sum)"
+},
+{
+"name": "bytes_sessions",
+"origName": "aws:cloudwatch : EVAL-bytes_sessions",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DatabaseConnections\", Sum)"
+},
+{
+"name": "bytes_sga_free_memory",
+"origName": "aws:cloudwatch : EVAL-bytes_sga_free_memory",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"FreeableMemory\", Sum)"
+},
+{
+"name": "bytes_storage_free",
+"origName": "aws:cloudwatch : EVAL-bytes_storage_free",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"FreeStorageSpace\", Sum)"
+},
+{
+"name": "bytes_swap_used",
+"origName": "aws:cloudwatch : EVAL-bytes_swap_used",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"SwapUsage\", Sum)"
+},
+{
+"name": "bytes_write_latency",
+"origName": "aws:cloudwatch : EVAL-bytes_write_latency",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"WriteLatency\", Sum)"
+},
+{
+"name": "cpu_load_percent",
+"origName": "aws:cloudwatch : EVAL-cpu_load_percent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"CPUUtilization\", Average)"
+},
+{
+"name": "dest",
+"origName": "aws:cloudwatch : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"FreeableMemory\" OR metric_name=\"SwapUsage\" OR metric_name=\"WriteLatency\" OR metric_name=\"ReadLatency\" OR metric_name=\"ReadIOPS\" OR metric_name=\"WriteIOPS\" OR metric_name=\"VolumeReadOps\" OR metric_name=\"VolumeWriteOps\" OR metric_name=\"DiskReadOps\" OR metric_name=\"DiskWriteOps\" OR metric_name=\"CPUUtilization\" OR metric_name=\"NetworkPacketsIn\" OR metric_name=\"DatabaseConnections\", 'metric_dimensions')"
+},
+{
+"name": "Maximum",
+"origName": "aws:cloudwatch : EVAL-Maximum",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(Average==\"\", 0, Average!=\"\", Maximum)"
+},
+{
+"name": "mem_free",
+"origName": "aws:cloudwatch : EVAL-mem_free",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"FreeableMemory\", Sum)"
+},
+{
+"name": "Minimum",
+"origName": "aws:cloudwatch : EVAL-Minimum",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(Average==\"\", 0, Average!=\"\", Minimum)"
+},
+{
+"name": "network_packets_in",
+"origName": "aws:cloudwatch : EVAL-network_packets_in",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkPacketsIn\", Sum)"
+},
+{
+"name": "network_packets_out",
+"origName": "aws:cloudwatch : EVAL-network_packets_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkPacketsOut\", Sum)"
+},
+{
+"name": "network_usage_in",
+"origName": "aws:cloudwatch : EVAL-network_usage_in",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkIn\", Sum)"
+},
+{
+"name": "network_usage_out",
+"origName": "aws:cloudwatch : EVAL-network_usage_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"NetworkOut\", Sum)"
+},
+{
+"name": "read_ops",
+"origName": "aws:cloudwatch : EVAL-read_ops",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskReadOps\" OR metric_name=\"VolumeReadOps\" OR metric_name=\"ReadIOPS\", Sum)"
+},
+{
+"name": "rtt",
+"origName": "aws:cloudwatch : EVAL-rtt",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"Latency\", Average)"
+},
+{
+"name": "storage_ops_read",
+"origName": "aws:cloudwatch : EVAL-storage_ops_read",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskReadOps\" OR metric_name=\"VolumeReadOps\" OR metric_name=\"ReadIOPS\", Sum)"
+},
+{
+"name": "storage_ops_write",
+"origName": "aws:cloudwatch : EVAL-storage_ops_write",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskWriteOps\" OR metric_name=\"VolumeWriteOps\" OR metric_name=\"WriteIOPS\", Sum)"
+},
+{
+"name": "storage_usage_read",
+"origName": "aws:cloudwatch : EVAL-storage_usage_read",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskReadBytes\", Sum)"
+},
+{
+"name": "storage_usage_write",
+"origName": "aws:cloudwatch : EVAL-storage_usage_write",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskWriteBytes\", Sum)"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudwatch : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "\"AWS CloudWatch\""
+},
+{
+"name": "write_ops",
+"origName": "aws:cloudwatch : EVAL-write_ops",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"value": "case(metric_name=\"DiskWriteOps\" OR metric_name=\"VolumeWriteOps\" OR metric_name=\"WriteIOPS\", Sum)"
+},
+{
+"name": "action",
+"origName": "aws:cloudwatch:guardduty : EVAL-action",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case('service.action.dnsRequestAction.blocked'==\"true\", \"blocked\", 'service.action.networkConnectionAction.blocked'==\"true\", \"blocked\", 'service.action.portProbeAction.blocked'==\"true\", \"blocked\", true(), \"allowed\")"
+},
+{
+"name": "app",
+"origName": "aws:cloudwatch:guardduty : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "\"AWS GuardDuty\""
+},
+{
+"name": "awsresource",
+"origName": "aws:cloudwatch:guardduty : EVAL-awsresource",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "coalesce('resource.instanceDetails.instanceId', 'resource.accessKeyDetails.userName')"
+},
+{
+"name": "dest",
+"origName": "aws:cloudwatch:guardduty : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(mvcount(aws_count)==1, replace(affectedResources, \"\\\"AWS::(?:[^\\\"]*)\\\"\\s*:\\s*\\\"[^\\\"]*((?<=role\\/|\\\")[^\\\"]*)\\\"\", \"\\1\"),\n            match(description, \"(S3 bucket)|(Impact:S3/)|(Amazon S3)\"), coalesce(AWS__S3__Bucket, AWS__EC2__Instance, instanceId, accountId),\n            match(description, \"AWS CloudTrail trail\"), coalesce(AWS__CloudTrail__Trail, accountId),\n            match(description, \"Principal AssumedRole\"), replace(description, \".*Principal AssumedRole\\s*:\\s*([^\\s]+).*\", \"\\1\"),\n            match(description, \"Principal IAMUser:\"), coalesce(AWS__IAM__User, instanceId, accountId),\n            match(description, \"(Denial of Service) | (DoS)\"), 'service.action.networkConnectionAction.remoteIpDetails.ipAddressV4',\n            match(description, \"remote host ((?:\\d+.){3}(?:\\d+))\"), replace(description, \".*remote host ((?:\\d+.){3}(?:\\d+)).*\", \"\\1\"),\n            match(description, \"communicating with(?:.*?) IP address ((?:\\d+.){3}(?:\\d+))\"), replace(description, \".*communicating with(?:.*?) IP address ((?:\\d+.){3}(?:\\d+)).*\", \"\\1\"),\n            match(description, \"Credentials created(?:.*?) role \"), replace(description, \".*Credentials created(?:.*?) role ([^\\s]+).*\", \"\\1\"),\n            match(description, \"EC2 instance(?:.*?) has attempted to communicate\"), null(),\n            match(description, instanceId), instanceId,\n            true(), coalesce(instanceId, accountId))"
+},
+{
+"name": "dest_ip",
+"origName": "aws:cloudwatch:guardduty : EVAL-dest_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(match(description, \"remote host ((?:\\d+.){3}(?:\\d+))\"), replace(description, \".*remote host ((?:\\d+.){3}(?:\\d+)).*\", \"\\1\"),\n                match(description, \"communicating with(?:.*?) IP address ((?:\\d+.){3}(?:\\d+))\"), replace(description, \".*communicating with(?:.*?) IP address ((?:\\d+.){3}(?:\\d+)).*\", \"\\1\"),\n                match(description, \"(Denial of Service)|(DoS)\"), 'service.action.networkConnectionAction.remoteIpDetails.ipAddressV4')"
+},
+{
+"name": "dest_name",
+"origName": "aws:cloudwatch:guardduty : EVAL-dest_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(mvcount(aws_count)==1, replace(affectedResources, \"\\\"AWS::(?:[^\\\"]*)\\\"\\s*:\\s*\\\"[^\\\"]*((?<=role\\/|\\\")[^\\\"]*)\\\"\", \"\\1\"),\n                match(description, \"(S3 bucket)|(Impact:S3/)|(Amazon S3)\"), coalesce(AWS__S3__Bucket, AWS__EC2__Instance, instanceId, accountId),\n                match(description, \"AWS CloudTrail trail\"), coalesce(AWS__CloudTrail__Trail, accountId),\n                match(description, \"Principal AssumedRole\"), replace(description, \".*Principal AssumedRole\\s*:\\s*([^\\s]+).*\", \"\\1\"),\n                match(description, \"Principal IAMUser:\"), coalesce(AWS__IAM__User, instanceId, accountId),\n                match(description, \"(Denial of Service) | (DoS)\"), 'service.action.networkConnectionAction.remoteIpDetails.ipAddressV4',\n                match(description, \"remote host ((?:\\d+.){3}(?:\\d+))\"), null(),\n                match(description, \"communicating with(?:.*?) IP address ((?:\\d+.){3}(?:\\d+))\"), null(),\n                match(description, \"Credentials created(?:.*?) role \"), replace(description, \".*Credentials created(?:.*?) role ([^\\s]+).*\", \"\\1\"),\n                match(description, \"EC2 instance(?:.*?) has attempted to communicate\"), null(),\n                match(description, instanceId), instanceId,\n                true(), coalesce(instanceId, accountId))"
+},
+{
+"name": "dest_port",
+"origName": "aws:cloudwatch:guardduty : EVAL-dest_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(match(description, \"(EC2 instance(?:.*?) is communicating with IP address ((?:\\d+.){3}(?:\\d+)))|(EC2 instance(?:.*?) has attempted to communicate)|(EC2 instance(?:.*?) remote host ((?:\\d+.){3}(?:\\d+)))|(EC2 instance(?:.*?) Denial of Service)\"), 'service.action.networkConnectionAction.remotePortDetails.port',\n                    true(), 'service.action.networkConnectionAction.localPortDetails.port')"
+},
+{
+"name": "dest_type",
+"origName": "aws:cloudwatch:guardduty : EVAL-dest_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(match(description, \"(S3 bucket)|(Impact:S3/)|(Amazon S3)|(S3 Bucket)\"), \"S3Bucket\",\n                match(description, \"AWS CloudTrail trail\"), \"CloudTrail Trail\",\n                match(description, \"Principal AssumedRole\"), \"Role\",\n                match(description, \"Principal IAMUser:\"), \"user\",\n                match(description, \"remote host ((?:\\d+.){3}(?:\\d+))\"), null(),\n                mvcount(aws_count)==1, replace(affectedResources, \"\\\"AWS::(?:[^\\\"]*)\\\"\\s*:\\s*\\\"[^\\\"]*((?<=role\\/|\\\")[^\\\"]*)\\\"\", \"\\1\"),\n                match(description, instanceId), \"instance\", instanceId!=\"\" or isnotnull(instanceId), \"instance\",\n                true(), \"AwsAccount\")"
+},
+{
+"name": "dvc",
+"origName": "aws:cloudwatch:guardduty : EVAL-dvc",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "\"AWS GuardDuty\""
+},
+{
+"name": "findingType",
+"origName": "aws:cloudwatch:guardduty : EVAL-findingType",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "type"
+},
+{
+"name": "ids_type",
+"origName": "aws:cloudwatch:guardduty : EVAL-ids_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "\"network\""
+},
+{
+"name": "severity",
+"origName": "aws:cloudwatch:guardduty : EVAL-severity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(severity_id<4, \"low\", severity_id<7, \"medium\", severity_id<9, \"high\")"
+},
+{
+"name": "signature",
+"origName": "aws:cloudwatch:guardduty : EVAL-signature",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "if(severity_id < 8 AND subject!=\"UnauthorizedAccess:EC2/SSHBruteForce\", title, subject)"
+},
+{
+"name": "signature_id",
+"origName": "aws:cloudwatch:guardduty : EVAL-signature_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "if(severity_id < 8 AND subject!=\"UnauthorizedAccess:EC2/SSHBruteForce\", subject, detectorId)"
+},
+{
+"name": "src",
+"origName": "aws:cloudwatch:guardduty : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case('service.resourceRole'=\"ACTOR\", case('resource.resourceType'=\"Instance\", 'resource.instanceDetails.instanceId', 'resource.resourceType'=\"AccessKey\",\n            'resource.accessKeyDetails.principalId', 'resource.resourceType'=\"S3Bucket\", coalesce('resource.s3BucketDetails{}.name', 'resource.s3BucketDetails{}.arn'), 1==1, \"\"),\n            'service.resourceRole'=\"TARGET\", coalesce(case(match(description, \"EC2 instance(?:.*?) communicating with IP address ((?:\\d+.){3}(?:\\d+))\"), instanceId), case(match(description, \"EC2 instance(?:.*?) has attempted to communicate\"), instanceId), case(match(description, \"EC2 instance(?:.*?) remote host ((?:\\d+.){3}(?:\\d+))\"), instanceId), 'service.action.awsApiCallAction.remoteIpDetails.ipAddressV4', 'service.action.networkConnectionAction.remoteIpDetails.ipAddressV4',\n            'service.action.networkConnectionAction.localIpDetails.ipAddressV4','service.action.portProbeAction.portProbeDetails{}.remoteIpDetails.ipAddressV4'))"
+},
+{
+"name": "src_intrusion",
+"origName": "aws:cloudwatch:guardduty : EVAL-src_intrusion",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "coalesce(src_ip,src)"
+},
+{
+"name": "src_ip",
+"origName": "aws:cloudwatch:guardduty : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "if(match(description, \"(EC2 instance(?:.*?) communicating with IP address ((?:\\d+.){3}(?:\\d+)))|(EC2 instance(?:.*?) has attempted to communicate)|(EC2 instance(?:.*?) remote host ((?:\\d+.){3}(?:\\d+)))|(Denial of Service)\"), null(),\n                coalesce('service.action.awsApiCallAction.remoteIpDetails.ipAddressV4', 'service.action.networkConnectionAction.remoteIpDetails.ipAddressV4', 'service.action.networkConnectionAction.localIpDetails.ipAddressV4', 'service.action.portProbeAction.portProbeDetails{}.remoteIpDetails.ipAddressV4'))"
+},
+{
+"name": "src_name",
+"origName": "aws:cloudwatch:guardduty : EVAL-src_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case('service.resourceRole'=\"ACTOR\" AND 'resource.resourceType'=\"AccessKey\", 'resource.accessKeyDetails.userName',\n                match(description, \"(EC2 instance(?:.*?) has attempted to communicate)|(EC2 instance(?:.*?) remote host ((?:\\d+.){3}(?:\\d+)))|EC2 instance(?:.*?) communicating with IP address ((?:\\d+.){3}(?:\\d+))|(EC2 instance(?:.*?) Denial of Service)\"), instanceId)"
+},
+{
+"name": "src_port",
+"origName": "aws:cloudwatch:guardduty : EVAL-src_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "case(match(description, \"(EC2 instance(?:.*?) is communicating with IP address ((?:\\d+.){3}(?:\\d+)))|(EC2 instance(?:.*?) has attempted to communicate)|(EC2 instance(?:.*?) remote host ((?:\\d+.){3}(?:\\d+)))|(EC2 instance(?:.*?) Denial of Service)\"), 'service.action.networkConnectionAction.localPortDetails.port',\n                true(), 'service.action.networkConnectionAction.remotePortDetails.port')"
+},
+{
+"name": "transport",
+"origName": "aws:cloudwatch:guardduty : EVAL-transport",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "\"tcp\""
+},
+{
+"name": "type",
+"origName": "aws:cloudwatch:guardduty : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "if(severity_id < 5, \"alert\", \"alarm\")"
+},
+{
+"name": "user_name",
+"origName": "aws:cloudwatch:guardduty : EVAL-user_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "if('resource.resourceType'=\"AccessKey\", 'resource.accessKeyDetails.userName', null())"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudwatch:guardduty : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"value": "\"AWS GuardDuty\""
+},
+{
+"name": "app",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "\"AWS GuardDuty\""
+},
+{
+"name": "dest",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "if('detail.service.resourceRole'=\"TARGET\", case('detail.resource.resourceType'=\"Instance\", 'detail.resource.instanceDetails.instanceId', \n            'detail.resource.resourceType'=\"AccessKey\", 'detail.resource.accessKeyDetails.principalId', 'detail.resource.resourceType'=\"S3Bucket\", coalesce('detail.resource.s3BucketDetails{}.name', \n            'detail.resource.s3BucketDetails{}.arn'), 1==1, \"\"), null())"
+},
+{
+"name": "dest_name",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-dest_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "if('detail.service.resourceRole'=\"TARGET\" AND 'detail.resource.resourceType'=\"AccessKey\", 'detail.resource.accessKeyDetails.userName', null())"
+},
+{
+"name": "dest_type",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-dest_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "'detail.resource.resourceType'"
+},
+{
+"name": "findingType",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-findingType",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "\"alert\""
+},
+{
+"name": "severity",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-severity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "case(severity_id<=4, \"low\", severity_id<=7, \"medium\", severity_id<=9, \"high\")"
+},
+{
+"name": "src",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "case('detail.service.resourceRole'=\"ACTOR\", case('detail.resource.resourceType'=\"Instance\", 'detail.resource.instanceDetails.instanceId', \n            'detail.resource.resourceType'=\"AccessKey\",'detail.resource.accessKeyDetails.principalId', 'detail.resource.resourceType'=\"S3Bucket\", coalesce('detail.resource.s3BucketDetails{}.name', \n            'detail.resource.s3BucketDetails{}.arn'), 1==1, \"\"), 'detail.service.resourceRole'=\"TARGET\", coalesce('detail.service.action.awsApiCallAction.remoteIpDetails.ipAddressV4', \n            'detail.service.action.networkConnectionAction.remoteIpDetails.ipAddressV4', 'detail.service.action.networkConnectionAction.localIpDetails.ipAddressV4'))"
+},
+{
+"name": "src_name",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-src_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "if('detail.service.resourceRole'=\"ACTOR\" AND 'detail.resource.resourceType'=\"AccessKey\", 'detail.resource.accessKeyDetails.userName', null())"
+},
+{
+"name": "type",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "\"alert\""
+},
+{
+"name": "user",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "if('detail.resource.resourceType'=\"AccessKey\", 'detail.resource.accessKeyDetails.userName', null())"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudwatchlogs:guardduty : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"value": "\"AWS GuardDuty\""
+},
+{
+"name": "app",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "\"AWS VPC Flow Logs\""
+},
+{
+"name": "bytes",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-bytes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(bytes!=\"-\", bytes, \"unknown\")"
+},
+{
+"name": "dest",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(dest!=\"-\", dest, \"unknown\")"
+},
+{
+"name": "dest_ip",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-dest_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(dest_ip!=\"-\", dest_ip, \"unknown\")"
+},
+{
+"name": "dest_port",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-dest_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(dest_port!=\"-\", dest_port, \"unknown\")"
+},
+{
+"name": "duration",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-duration",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "end_time-start_time"
+},
+{
+"name": "packets",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-packets",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(packets!=\"-\", packets, \"unknown\")"
+},
+{
+"name": "protocol_code",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-protocol_code",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(protocol_code!=\"-\", protocol_code, \"unknown\")"
+},
+{
+"name": "protocol_version",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-protocol_version",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "case(match(dest_ip,\"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\"),\"IPV4\",dest_ip=\"-\" OR dest_ip=\"unknown\", \"unknown\", match(dest_ip,\"(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))\"),\"IPV6\")"
+},
+{
+"name": "src",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(src!=\"-\", src, \"unknown\")"
+},
+{
+"name": "src_ip",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(src_ip!=\"-\", src_ip, \"unknown\")"
+},
+{
+"name": "src_port",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-src_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(src_port!=\"-\", src_port, \"unknown\")"
+},
+{
+"name": "vendor_product",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "\"AWS VPC Flow Logs\""
+},
+{
+"name": "vpcflow_action",
+"origName": "aws:cloudwatchlogs:vpcflow : EVAL-vpcflow_action",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"value": "if(vpcflow_action!=\"-\", vpcflow_action, \"unknown\")"
+},
+{
+"name": "change_type",
+"origName": "aws:config : EVAL-change_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"value": "\"configuration\""
+},
+{
+"name": "dvc",
+"origName": "aws:config : EVAL-dvc",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"value": "\"AWS Config\""
+},
+{
+"name": "status",
+"origName": "aws:config : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"value": "\"success\""
+},
+{
+"name": "vendor_product",
+"origName": "aws:config : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"value": "\"AWS Config\""
+},
+{
+"name": "change_type",
+"origName": "aws:config:notification : EVAL-change_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"value": "\"configuration\""
+},
+{
+"name": "dvc",
+"origName": "aws:config:notification : EVAL-dvc",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"value": "\"AWS Config\""
+},
+{
+"name": "object_path",
+"origName": "aws:config:notification : EVAL-object_path",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"value": "case(('configurationItem.ARN'=\"null\") OR isnull('configurationItem.ARN'),'configurationItem.resourceId',true(),'configurationItem.ARN')"
+},
+{
+"name": "status",
+"origName": "aws:config:notification : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"value": "\"success\""
+},
+{
+"name": "vendor_product",
+"origName": "aws:config:notification : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"value": "\"AWS Config\""
+},
+{
+"name": "app",
+"origName": "aws:config:rule : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "\"AWS Lambda function\""
+},
+{
+"name": "dest",
+"origName": "aws:config:rule : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "'EvaluationResultIdentifier.EvaluationResultQualifier.ResourceId'"
+},
+{
+"name": "enabled",
+"origName": "aws:config:rule : EVAL-enabled",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "if(ConfigRuleState=\"ACTIVE\",1,0)"
+},
+{
+"name": "severity",
+"origName": "aws:config:rule : EVAL-severity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "\"medium\""
+},
+{
+"name": "signature_id",
+"origName": "aws:config:rule : EVAL-signature_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "coalesce('EvaluationResultIdentifier.EvaluationResultQualifier.ResourceType','ConfigRuleId')"
+},
+{
+"name": "type",
+"origName": "aws:config:rule : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "\"alert\""
+},
+{
+"name": "vendor_product",
+"origName": "aws:config:rule : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"value": "\"AWS Config\""
+},
+{
+"name": "account_id",
+"origName": "aws:description : EVAL-account_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "if(isnull(owner_id), account_id, owner_id)"
+},
+{
+"name": "aws_account_id",
+"origName": "aws:description : EVAL-aws_account_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "if(isnull(owner_id), account_id, owner_id)"
+},
+{
+"name": "custom_tag",
+"origName": "aws:description : EVAL-custom_tag",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "split(custom_tag_str, \",\")"
+},
+{
+"name": "description",
+"origName": "aws:description : EVAL-description",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "coalesce(description, 'image.attributes.description')"
+},
+{
+"name": "dns",
+"origName": "aws:description : EVAL-dns",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), mvappend(if(public_dns_name=\"\" OR public_dns_name=\"null\", null(), public_dns_name), if(private_dns_name=\"null\", null(), private_dns_name)))"
+},
+{
+"name": "enabled",
+"origName": "aws:description : EVAL-enabled",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case('image.attributes.state'=\"available\", \"true\",'state'=\"available\", \"true\",('status'=\"in-use\" OR 'status'=\"available\"),\"true\",true(),\"false\")"
+},
+{
+"name": "family",
+"origName": "aws:description : EVAL-family",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "coalesce('image.attributes.architecture', architecture)"
+},
+{
+"name": "hypervisor_name",
+"origName": "aws:description : EVAL-hypervisor_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), hypervisor)"
+},
+{
+"name": "identity",
+"origName": "aws:description : EVAL-identity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:iam_users\"), mvappend(if(user_id=\"\" OR user_id=\"null\", null(), user_id), if(user_name=\"\" OR user_name=\"null\", null(), user_name)))"
+},
+{
+"name": "ip",
+"origName": "aws:description : EVAL-ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), mvappend(if(ip_address=\"null\",null(), ip_address), if(private_ip_address=\"null\",null(), private_ip_address)))"
+},
+{
+"name": "nt_host",
+"origName": "aws:description : EVAL-nt_host",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(id!=\"null\", id)"
+},
+{
+"name": "power_state",
+"origName": "aws:description : EVAL-power_state",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), state)"
+},
+{
+"name": "region",
+"origName": "aws:description : EVAL-region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "if(isnotnull(region), region, substr(availability_zone,1,(len(availability_zone) - 1)))"
+},
+{
+"name": "snapshot",
+"origName": "aws:description : EVAL-snapshot",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), coalesce('image.attributes.name',snapshot_id),true(),snapshot_id)"
+},
+{
+"name": "status",
+"origName": "aws:description : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), coalesce('image.attributes.state', state, status),true(),coalesce(status,state))"
+},
+{
+"name": "storage_capacity",
+"origName": "aws:description : EVAL-storage_capacity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_volumes\"), size * 1073741824)"
+},
+{
+"name": "subnet_id",
+"origName": "aws:description : EVAL-subnet_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(subnet_id!=\"null\", subnet_id)"
+},
+{
+"name": "time",
+"origName": "aws:description : EVAL-time",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), coalesce(launch_time, create_time),true(),coalesce(launch_time,create_time))"
+},
+{
+"name": "type",
+"origName": "aws:description : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "coalesce('image.attributes.type', type)"
+},
+{
+"name": "user_id",
+"origName": "aws:description : EVAL-user_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "coalesce(user_id, account_id)"
+},
+{
+"name": "vendor",
+"origName": "aws:description : EVAL-vendor",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "\"AWS\""
+},
+{
+"name": "vendor_account",
+"origName": "aws:description : EVAL-vendor_account",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "if(isnull(owner_id), account_id, owner_id)"
+},
+{
+"name": "vendor_product",
+"origName": "aws:description : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \"^.*:ec2_.*$\"), \"EC2\")"
+},
+{
+"name": "vendor_region",
+"origName": "aws:description : EVAL-vendor_region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "if(isnotnull(region), region, substr(availability_zone,1,(len(availability_zone) - 1)))"
+},
+{
+"name": "virtual_network_id",
+"origName": "aws:description : EVAL-virtual_network_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(vpc_id!=\"null\", vpc_id)"
+},
+{
+"name": "virtual_subnet_id",
+"origName": "aws:description : EVAL-virtual_subnet_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(subnet_id!=\"null\", subnet_id)"
+},
+{
+"name": "vm_id",
+"origName": "aws:description : EVAL-vm_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(source, \".+\\:ec2_instances\"), id)"
+},
+{
+"name": "vm_os",
+"origName": "aws:description : EVAL-vm_os",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(match(lower(platform),\"^.*linux.*$\"), \"Linux\", match(lower(platform),\"^.*windows.*$\"), \"Windows\", true(), \"Unknown\")"
+},
+{
+"name": "vpc_id",
+"origName": "aws:description : EVAL-vpc_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"value": "case(vpc_id!=\"null\", vpc_id)"
+},
+{
+"name": "app",
+"origName": "aws:elb:accesslogs : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "\"AWS ELB\""
+},
+{
+"name": "bytes",
+"origName": "aws:elb:accesslogs : EVAL-bytes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "ReceivedBytes + SentBytes"
+},
+{
+"name": "bytes_in",
+"origName": "aws:elb:accesslogs : EVAL-bytes_in",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(ReceivedBytes) AND ReceivedBytes!=\"-\", ReceivedBytes, null())"
+},
+{
+"name": "bytes_out",
+"origName": "aws:elb:accesslogs : EVAL-bytes_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(SentBytes) AND SentBytes!=\"-\", SentBytes, null())"
+},
+{
+"name": "category",
+"origName": "aws:elb:accesslogs : EVAL-category",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "\"AWS ELB\""
+},
+{
+"name": "dest",
+"origName": "aws:elb:accesslogs : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(RequestTargetIP) AND RequestTargetIP!=\"-\", RequestTargetIP, null())"
+},
+{
+"name": "dest_port",
+"origName": "aws:elb:accesslogs : EVAL-dest_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(RequestTargetPort) AND RequestTargetPort!=\"-\", RequestTargetPort, null())"
+},
+{
+"name": "elb_type",
+"origName": "aws:elb:accesslogs : EVAL-elb_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(like(elb, \"net/%\"), \"NLB\", if(like(elb, \"app/%\"), \"ALB\", \"ELB\"))"
+},
+{
+"name": "http_method",
+"origName": "aws:elb:accesslogs : EVAL-http_method",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "mvindex(split(Request, \" \"), 0)"
+},
+{
+"name": "http_user_agent",
+"origName": "aws:elb:accesslogs : EVAL-http_user_agent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(UserAgent) AND UserAgent!=\"-\", UserAgent, null())"
+},
+{
+"name": "http_user_agent_length",
+"origName": "aws:elb:accesslogs : EVAL-http_user_agent_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(UserAgent) AND UserAgent!=\"\", len(UserAgent), 0)"
+},
+{
+"name": "response_time",
+"origName": "aws:elb:accesslogs : EVAL-response_time",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(ResponseProcessingTime!=\"-1\", ResponseProcessingTime, null())"
+},
+{
+"name": "src",
+"origName": "aws:elb:accesslogs : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "mvindex(split(ClientPort, \":\"), 0)"
+},
+{
+"name": "src_ip",
+"origName": "aws:elb:accesslogs : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "mvindex(split(ClientPort, \":\"), 0)"
+},
+{
+"name": "src_port",
+"origName": "aws:elb:accesslogs : EVAL-src_port",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "mvindex(split(ClientPort, \":\"), 1)"
+},
+{
+"name": "status",
+"origName": "aws:elb:accesslogs : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "if(isnotnull(ELBStatusCode) AND ELBStatusCode!=\"-\", ELBStatusCode, null())"
+},
+{
+"name": "url",
+"origName": "aws:elb:accesslogs : EVAL-url",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "mvindex(split(Request, \" \"), 1)"
+},
+{
+"name": "url_length",
+"origName": "aws:elb:accesslogs : EVAL-url_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "len(mvindex(split(Request, \" \"), 1))"
+},
+{
+"name": "vendor_product",
+"origName": "aws:elb:accesslogs : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"value": "\"AWS ELB\""
+},
+{
+"name": "dest",
+"origName": "aws:inspector : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector",
+"value": "mvindex('attributes{}.value',mvfind('attributes{}.key',\"^INSTANCE_ID$\"))"
+},
+{
+"name": "type",
+"origName": "aws:inspector : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector",
+"value": "\"event\""
+},
+{
+"name": "vendor_account",
+"origName": "aws:inspector : EVAL-vendor_account",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector",
+"value": "if(match(source, \".+\\:inspector:finding\"), account_id, null())"
+},
+{
+"name": "vendor_product",
+"origName": "aws:inspector : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector",
+"value": "\"AWS Inspector\""
+},
+{
+"name": "app",
+"origName": "aws:inspector:v2:findings : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"value": "\"AWS Inspector\""
+},
+{
+"name": "dest_type",
+"origName": "aws:inspector:v2:findings : EVAL-dest_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"value": "\"instance\""
+},
+{
+"name": "severity",
+"origName": "aws:inspector:v2:findings : EVAL-severity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"value": "lower(severity)"
+},
+{
+"name": "signature_id",
+"origName": "aws:inspector:v2:findings : EVAL-signature_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"value": "if(isnotnull(cve), cve, title)"
+},
+{
+"name": "vendor_product",
+"origName": "aws:inspector:v2:findings : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"value": "\"AWS Inspector\""
+},
+{
+"name": "account_id",
+"origName": "aws:metadata : EVAL-account_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "if(isnull(OwnerId), account_id, OwnerId)"
+},
+{
+"name": "AccountId",
+"origName": "aws:metadata : EVAL-AccountId",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "mvindex(split(source,\":\"),0)"
+},
+{
+"name": "aws_account_id",
+"origName": "aws:metadata : EVAL-aws_account_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "if(isnull(OwnerId), account_id, OwnerId)"
+},
+{
+"name": "custom_tag",
+"origName": "aws:metadata : EVAL-custom_tag",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "mvzip('Tags{}.Key','Tags{}.Value',\":\")"
+},
+{
+"name": "dns",
+"origName": "aws:metadata : EVAL-dns",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), mvappend(if(PublicDnsName=\"\" OR PublicDnsName=\"null\", null(), PublicDnsName), if(PrivateDnsName=\"null\", null(), PrivateDnsName)))"
+},
+{
+"name": "enabled",
+"origName": "aws:metadata : EVAL-enabled",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), if('State.Name'=\"running\", \"true\", \"false\"))"
+},
+{
+"name": "hypervisor_name",
+"origName": "aws:metadata : EVAL-hypervisor_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), Hypervisor)"
+},
+{
+"name": "identity",
+"origName": "aws:metadata : EVAL-identity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:iam_users\"), mvappend(if(UserId=\"\" OR UserId=\"null\", null(), UserId), if(UserName=\"\" OR UserName=\"null\", null(), UserName)))"
+},
+{
+"name": "ip",
+"origName": "aws:metadata : EVAL-ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), mvappend(if(PublicIpAddress=\"null\",null(), PublicIpAddress), if(PrivateIpAddress=\"null\",null(), PrivateIpAddress)))"
+},
+{
+"name": "nt_host",
+"origName": "aws:metadata : EVAL-nt_host",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(InstanceId!=\"null\", InstanceId)"
+},
+{
+"name": "power_state",
+"origName": "aws:metadata : EVAL-power_state",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), 'State.Name')"
+},
+{
+"name": "Region",
+"origName": "aws:metadata : EVAL-Region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "mvindex(split(source,\":\"),1)"
+},
+{
+"name": "region",
+"origName": "aws:metadata : EVAL-region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "if(isnotnull(region), region, substr(AvailabilityZone,1,(len(AvailabilityZone) - 1)))"
+},
+{
+"name": "storage_capacity",
+"origName": "aws:metadata : EVAL-storage_capacity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_volumes\"), Size * 1073741824)"
+},
+{
+"name": "subnet_id",
+"origName": "aws:metadata : EVAL-subnet_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(SubnetId!=\"null\", SubnetId)"
+},
+{
+"name": "vendor",
+"origName": "aws:metadata : EVAL-vendor",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "\"AWS\""
+},
+{
+"name": "vendor_account",
+"origName": "aws:metadata : EVAL-vendor_account",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "if(isnull(OwnerId), account_id, OwnerId)"
+},
+{
+"name": "vendor_product",
+"origName": "aws:metadata : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \"^.*:ec2_.*$\"), \"EC2\")"
+},
+{
+"name": "vendor_region",
+"origName": "aws:metadata : EVAL-vendor_region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "if(isnotnull(region), region, substr(AvailabilityZone,1,(len(AvailabilityZone) - 1)))"
+},
+{
+"name": "virtual_network_id",
+"origName": "aws:metadata : EVAL-virtual_network_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(VpcId!=\"null\", VpcId)"
+},
+{
+"name": "virtual_subnet_id",
+"origName": "aws:metadata : EVAL-virtual_subnet_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(SubnetId!=\"null\", SubnetId)"
+},
+{
+"name": "vm_id",
+"origName": "aws:metadata : EVAL-vm_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(source, \".+\\:ec2_instances\"), InstanceId)"
+},
+{
+"name": "vm_os",
+"origName": "aws:metadata : EVAL-vm_os",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(match(lower(Platform),\"^.*linux.*$\"), \"Linux\", match(lower(Platform),\"^.*windows.*$\"), \"Windows\", true(), \"Unknown\")"
+},
+{
+"name": "vpc_id",
+"origName": "aws:metadata : EVAL-vpc_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"value": "case(VpcId!=\"null\", VpcId)"
+},
+{
+"name": "bytes",
+"origName": "aws:s3 : EVAL-bytes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(BytesSent) AND BytesSent!=\"-\", BytesSent, null())"
+},
+{
+"name": "bytes_out",
+"origName": "aws:s3 : EVAL-bytes_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(BytesSent) AND BytesSent!=\"-\", BytesSent, null())"
+},
+{
+"name": "category",
+"origName": "aws:s3 : EVAL-category",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "\"Amazon S3\""
+},
+{
+"name": "dest",
+"origName": "aws:s3 : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(HostHeader) AND HostHeader!=\"-\", HostHeader, null())"
+},
+{
+"name": "error_code",
+"origName": "aws:s3 : EVAL-error_code",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(ErrorCode) AND ErrorCode!=\"-\", ErrorCode, null())"
+},
+{
+"name": "http_method",
+"origName": "aws:s3 : EVAL-http_method",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(HTTPMethod) AND HTTPMethod!=\"-\", HTTPMethod, null())"
+},
+{
+"name": "http_referrer",
+"origName": "aws:s3 : EVAL-http_referrer",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(Referer) AND Referer!=\"-\", Referer, null())"
+},
+{
+"name": "http_referrer_domain",
+"origName": "aws:s3 : EVAL-http_referrer_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(Referer) AND Referer!=\"-\", replace(Referer,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "http_user_agent",
+"origName": "aws:s3 : EVAL-http_user_agent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(UserAgent) AND UserAgent!=\"-\", UserAgent, null())"
+},
+{
+"name": "http_user_agent_length",
+"origName": "aws:s3 : EVAL-http_user_agent_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(UserAgent) AND UserAgent!= \"\", len(UserAgent), 0)"
+},
+{
+"name": "operation",
+"origName": "aws:s3 : EVAL-operation",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(OperationKey) AND OperationKey!=\"-\", OperationKey, null())"
+},
+{
+"name": "response_time",
+"origName": "aws:s3 : EVAL-response_time",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(TotalTime) AND TotalTime!=\"-\" AND TotalTime!=\"-1\", TotalTime, null())"
+},
+{
+"name": "src",
+"origName": "aws:s3 : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(RemoteIp) AND RemoteIp!=\"-\", RemoteIp, null())"
+},
+{
+"name": "src_ip",
+"origName": "aws:s3 : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(RemoteIp) AND RemoteIp!=\"-\", RemoteIp, null())"
+},
+{
+"name": "status",
+"origName": "aws:s3 : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(HTTPStatus) AND HTTPStatus!=\"-\", HTTPStatus, null())"
+},
+{
+"name": "storage_name",
+"origName": "aws:s3 : EVAL-storage_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(BucketName) AND BucketName!=\"-\", BucketName, null())"
+},
+{
+"name": "url",
+"origName": "aws:s3 : EVAL-url",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(TLSVersion!=\"-\", \"https://\", \"http://\"). \"\" .HostHeader. \"\" .if(RequestURIPath!=\"-\", RequestURIPath, \"\")"
+},
+{
+"name": "url_domain",
+"origName": "aws:s3 : EVAL-url_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(HostHeader) AND HostHeader!=\"-\", replace(HostHeader,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "url_length",
+"origName": "aws:s3 : EVAL-url_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "len(if(TLSVersion!=\"-\", \"https://\", \"http://\"). \"\" .HostHeader. \"\" .if(RequestURIPath!=\"-\", RequestURIPath, \"\"))"
+},
+{
+"name": "user",
+"origName": "aws:s3 : EVAL-user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "if(isnotnull(Requester) AND Requester!=\"-\", Requester, null())"
+},
+{
+"name": "vendor_product",
+"origName": "aws:s3 : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"value": "\"AWS S3\""
+},
+{
+"name": "bytes",
+"origName": "aws:s3:accesslogs : EVAL-bytes",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(bytes_sent!=\"-\", bytes_sent, 0)"
+},
+{
+"name": "bytes_out",
+"origName": "aws:s3:accesslogs : EVAL-bytes_out",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(bytes_sent!=\"-\", bytes_sent, 0)"
+},
+{
+"name": "category",
+"origName": "aws:s3:accesslogs : EVAL-category",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "\"Amazon S3\""
+},
+{
+"name": "error_code",
+"origName": "aws:s3:accesslogs : EVAL-error_code",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(error_code != \"-\", error_code, \"\")"
+},
+{
+"name": "host_header",
+"origName": "aws:s3:accesslogs : EVAL-host_header",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(host_header) AND host_header!=\"-\", host_header, null())"
+},
+{
+"name": "http_referrer",
+"origName": "aws:s3:accesslogs : EVAL-http_referrer",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(referrer) AND referrer!=\"-\", referrer, null())"
+},
+{
+"name": "http_referrer_domain",
+"origName": "aws:s3:accesslogs : EVAL-http_referrer_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(referrer) AND referrer!=\"-\", replace(referrer,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "http_user_agent",
+"origName": "aws:s3:accesslogs : EVAL-http_user_agent",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(user_agent) AND user_agent!=\"-\", user_agent, null())"
+},
+{
+"name": "http_user_agent_length",
+"origName": "aws:s3:accesslogs : EVAL-http_user_agent_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(user_agent) AND user_agent!= \"\", len(user_agent), 0)"
+},
+{
+"name": "response_time",
+"origName": "aws:s3:accesslogs : EVAL-response_time",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(total_time) AND total_time!=\"-\" AND total_time!=\"-1\", total_time, null())"
+},
+{
+"name": "src",
+"origName": "aws:s3:accesslogs : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(remote_ip) AND remote_ip!=\"-\", remote_ip, null())"
+},
+{
+"name": "src_ip",
+"origName": "aws:s3:accesslogs : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(remote_ip) AND remote_ip!=\"-\", remote_ip, null())"
+},
+{
+"name": "status",
+"origName": "aws:s3:accesslogs : EVAL-status",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(http_status) AND http_status!=\"-\", http_status, null())"
+},
+{
+"name": "storage_name",
+"origName": "aws:s3:accesslogs : EVAL-storage_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(bucket_name) AND bucket_name!=\"-\", bucket_name, null())"
+},
+{
+"name": "uri_path",
+"origName": "aws:s3:accesslogs : EVAL-uri_path",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "mvindex(split(uri, \"?\"), 0)"
+},
+{
+"name": "uri_query",
+"origName": "aws:s3:accesslogs : EVAL-uri_query",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "mvindex(split(uri, \"?\"), 1)"
+},
+{
+"name": "url",
+"origName": "aws:s3:accesslogs : EVAL-url",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(tls_version!=\"-\", \"https://\", \"http://\"). \"\" .host_header. \"\" .if(uri!=\"-\", uri, \"\")"
+},
+{
+"name": "url_domain",
+"origName": "aws:s3:accesslogs : EVAL-url_domain",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(isnotnull(host_header) AND host_header!=\"-\", replace(host_header,\"^.*?((?:[\\w-]+\\.)?[a-zA-Z]+\\.[a-zA-Z]+)(?=\\/|:|\\?|$).*\",\"\\1\"), null())"
+},
+{
+"name": "url_length",
+"origName": "aws:s3:accesslogs : EVAL-url_length",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "len(if(tls_version!=\"-\", \"https://\", \"http://\"). \"\" .host_header. \"\" .if(uri!=\"-\", uri, \"\"))"
+},
+{
+"name": "user",
+"origName": "aws:s3:accesslogs : EVAL-user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "if(authentication_type == \"authenticated\", requester, \"\")"
+},
+{
+"name": "vendor_product",
+"origName": "aws:s3:accesslogs : EVAL-vendor_product",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"value": "\"AWS S3\""
+},
+{
+"name": "app",
+"origName": "aws:securityhub:finding : EVAL-app",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce(ProductName, 'ProductFields.aws/securityhub/ProductName')"
+},
+{
+"name": "dest",
+"origName": "aws:securityhub:finding : EVAL-dest",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce((case('Resources{}.ResourceRole'=\"ACTOR\" OR 'ProductFields.aws/guardduty/service/resourceRole'=\"ACTOR\", null(),\n            (NOT (\"Resources{}.ResourceRole\"=\"ACTOR\" OR \"ProductFields.aws/guardduty/service/resourceRole\"=\"ACTOR\")), \n            if(mvcount('Resources{}.Type') > 1, \n            mvappend(case('Resources{}.Type'=\"AwsEc2Instance\", instance_extract), case('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract), \n            case('Resources{}.Type'=\"AwsIamUser\", user_extract), case('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract), \n            case('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract), case('Resources{}.Type'=\"AwsEc2Volume\", volume_extract), \n            case('Resources{}.Type'=\"AwsSsmAssociationCompliance\", managed_instance_extract), \n            case('Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract), case('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract)), \n            if('Resources{}.Type'=\"AwsEc2Instance\", instance_extract, if('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract, \n            if('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract, if('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract, \n            if('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract, if('Resources{}.Type'=\"AwsEc2Volume\", volume_extract,\n            if('Resources{}.Type'=\"AwsSsmAssociationCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsIamUser\", user_extract, replace('Resources{}.Id', \".*:\", \"\"))))))))))))), 'Resources{}.Details.AwsEc2Instance.IpV4Addresses{}')"
+},
+{
+"name": "dest_name",
+"origName": "aws:securityhub:finding : EVAL-dest_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce('Resources{}.Details.AwsIamUser.UserName', \n            (case('Resources{}.ResourceRole'=\"ACTOR\" OR 'ProductFields.aws/guardduty/service/resourceRole'=\"ACTOR\", null(), \n            (NOT (\"Resources{}.ResourceRole\"=\"ACTOR\" OR \"ProductFields.aws/guardduty/service/resourceRole\"=\"ACTOR\")), \n            if(mvcount('Resources{}.Type') > 1, \n            mvappend(case('Resources{}.Type'=\"AwsEc2Instance\", instance_extract), case('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract), \n            case('Resources{}.Type'=\"AwsIamUser\", user_extract), case('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract), \n            case('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract), case('Resources{}.Type'=\"AwsEc2Volume\", volume_extract), \n            case('Resources{}.Type'=\"AwsSsmAssociationCompliance\" OR 'Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract), \n            case('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract)), \n            if('Resources{}.Type'=\"AwsEc2Instance\", instance_extract, if('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract, \n            if('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract, if('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract, \n            if('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract, if('Resources{}.Type'=\"AwsEc2Volume\", volume_extract, \n            if('Resources{}.Type'=\"AwsSsmAssociationCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsIamUser\", user_extract, replace('Resources{}.Id', \".*:\", \"\"))))))))))))))"
+},
+{
+"name": "id",
+"origName": "aws:securityhub:finding : EVAL-id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "replace(Id,\"(?:.*)\\/(.*)\",\"\\1\")"
+},
+{
+"name": "recommendation",
+"origName": "aws:securityhub:finding : EVAL-recommendation",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "mvappend('Remediation.Recommendation.Text', 'Remediation.Recommendation.Url')"
+},
+{
+"name": "severity",
+"origName": "aws:securityhub:finding : EVAL-severity",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "lower('Severity.Label')"
+},
+{
+"name": "src",
+"origName": "aws:securityhub:finding : EVAL-src",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce((case('Resources{}.ResourceRole'=\"ACTOR\" OR 'ProductFields.aws/guardduty/service/resourceRole'=\"ACTOR\", \n            if(mvcount('Resources{}.Type') > 1, \n            mvappend(case('Resources{}.Type'=\"AwsEc2Instance\", instance_extract), case('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract), \n            case('Resources{}.Type'=\"AwsIamUser\", user_extract), case('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract), \n            case('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract), case('Resources{}.Type'=\"AwsEc2Volume\", volume_extract), \n            case('Resources{}.Type'=\"AwsSsmAssociationCompliance\", managed_instance_extract), \n            case('Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract), case('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract)), \n            if('Resources{}.Type'=\"AwsEc2Instance\", instance_extract, if('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract, \n            if('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract, if('Resources{}.Type'=\"AwsEc2SecurityGroup\", security_group_extract, \n            if('Resources{}.Type'=\"AwsEc2Vpc\", vpc_extract, if('Resources{}.Type'=\"AwsEc2Volume\", volume_extract, \n            if('Resources{}.Type'=\"AwsSsmAssociationCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsSsmPatchCompliance\", managed_instance_extract, \n            if('Resources{}.Type'=\"AwsIamUser\", user_extract, replace('Resources{}.Id', \".*:\", \"\"))))))))))), \n            (NOT (\"Resources{}.ResourceRole\"=\"ACTOR\" OR \"ProductFields.aws/guardduty/service/resourceRole\"=\"ACTOR\")), null())), \n            'ProductFields.aws/guardduty/service/action/networkConnectionAction/remoteIpDetails/ipAddressV4', 'ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/ipAddressV4')"
+},
+{
+"name": "src_ip",
+"origName": "aws:securityhub:finding : EVAL-src_ip",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce('ProductFields.aws/guardduty/service/action/networkConnectionAction/remoteIpDetails/ipAddressV4', 'ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/ipAddressV4')"
+},
+{
+"name": "src_name",
+"origName": "aws:securityhub:finding : EVAL-src_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "case('Resources{}.ResourceRole'=\"ACTOR\" OR 'ProductFields.aws/guardduty/service/resourceRole'=\"ACTOR\", \n            if(mvcount('Resources{}.Type') > 1, \n            mvappend(case('Resources{}.Type'=\"AwsEc2Instance\", instance_extract), case('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract), \n            case('Resources{}.Type'=\"AwsIamUser\", user_extract), case('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract)), \n            if('Resources{}.Type'=\"AwsEc2Instance\", instance_extract, if('Resources{}.Type'=\"AwsS3Bucket\", s3bucket_extract, \n            if('Resources{}.Type'=\"AwsIamAccessKey\", accesskey_extract, if('Resources{}.Type'=\"AwsIamUser\", user_extract, 'Resources{}.Id'))))), \n            (NOT (\"Resources{}.ResourceRole\"=\"ACTOR\" OR \"ProductFields.aws/guardduty/service/resourceRole\"=\"ACTOR\")), null())"
+},
+{
+"name": "src_type",
+"origName": "aws:securityhub:finding : EVAL-src_type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "case('Resources{}.ResourceRole'=\"ACTOR\" OR 'ProductFields.aws/guardduty/service/resourceRole'=\"ACTOR\",  \n            if(mvcount('Resources{}.Type') > 1, \n            mvappend(case('Resources{}.Type'=\"AwsEc2Instance\", \"instance\"), case('Resources{}.Type'=\"AwsEc2Volume\", \"disk\"), \n            case('Resources{}.Type'=\"AwsIamAccessKey\" OR 'Resources{}.Type'=\"AwsIamUser\", \"user\"), case('Resources{}.Type'=\"AwsEc2SecurityGroup\", \"firewall\"), \n            case('Resources{}.Type'=\"AwsS3Bucket\", \"storage\"), case('Resources{}.Type'=\"AwsIamRole\", \"role\"), case('Resources{}.Type'=\"AwsEc2Eip\", \"public ip\")), \n            if('Resources{}.Type'=\"AwsEc2Instance\", \"instance\", if('Resources{}.Type'=\"AwsEc2Volume\", \"disk\", if('Resources{}.Type'=\"AwsS3Bucket\", \"storage\", \n            if('Resources{}.Type'=\"AwsEc2SecurityGroup\", \"firewall\", if('Resources{}.Type'=\"AwsIamAccessKey\" OR 'Resources{}.Type'=\"AwsIamUser\", \"user\", \n            if('Resources{}.Type'=\"AwsIamRole\", \"role\", if('Resources{}.Type'=\"AwsEc2Eip\", \"public ip\", 'Resources{}.Type')))))))), \n            (NOT (\"Resources{}.ResourceRole\"=\"ACTOR\" OR \"ProductFields.aws/guardduty/service/resourceRole\"=\"ACTOR\")), null())"
+},
+{
+"name": "type",
+"origName": "aws:securityhub:finding : EVAL-type",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "case('Severity.Label'=\"INFORMATIONAL\", \"event\", 'Severity.Label'=\"LOW\", \"warning\", 'Severity.Label'=\"MEDIUM\", \"alert\", 'Severity.Label'=\"HIGH\", \"alert\", 'Severity.Label'=\"CRITICAL\", \"alarm\")"
+},
+{
+"name": "user",
+"origName": "aws:securityhub:finding : EVAL-user",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce('Resources{}.Details.AwsIamUser.UserName', case('Resources{}.Type'=\"AwsIamUser\", 'Resources{}.Details.AwsIamUser.UserId'), 'Resources{}.Details.AwsIamAccessKey.PrincipalName', account_user)"
+},
+{
+"name": "user_name",
+"origName": "aws:securityhub:finding : EVAL-user_name",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"value": "coalesce('Resources{}.Details.AwsIamUser.UserName', case('Resources{}.Type'=\"AwsIamUser\", 'Resources{}.Details.AwsIamUser.UserId'), 'Resources{}.Details.AwsIamAccessKey.PrincipalName', account_user)"
+},
+{
+"name": "rtt",
+"origName": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log)) : EVAL-rtt",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log))",
+"value": "request_processing_time + target_processing_time + response_processing_time"
+},
+{
+"name": "rtt",
+"origName": "source::...(/|\\\\)\\d+_elasticloadbalancing_*.log : EVAL-rtt",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::...(/|\\\\)\\d+_elasticloadbalancing_*.log",
+"value": "request_processing_time + backend_processing_time + response_processing_time"
+}
+]

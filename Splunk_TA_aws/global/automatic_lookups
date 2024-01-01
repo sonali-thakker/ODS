@@ -1,0 +1,263 @@
+[
+{
+"lookup.field.input.status": "sc_status",
+"lookup.field.output.status_description": "action",
+"name": "LOOKUP-awb_action_lookup",
+"origName": "aws:cloudfront:accesslogs : LOOKUP-awb_action_lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"transform": "aws_web_action_lookup"
+},
+{
+"name": "LOOKUP-x_edge_location",
+"origName": "aws:cloudfront:accesslogs : LOOKUP-x_edge_location",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"transform": "cloudfront_edge_location_lookup"
+},
+{
+"name": "LOOKUP-action-status-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : LOOKUP-action-status-for-aws-cloudtrail",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "aws-cloudtrail-action-status-lookup"
+},
+{
+"name": "LOOKUP-changetype-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : LOOKUP-changetype-for-aws-cloudtrail",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "change_type-for-aws-cloudtrail"
+},
+{
+"name": "LOOKUP-changeType-for-aws-cloudtrail-lookup",
+"origName": "aws:cloudtrail : LOOKUP-changeType-for-aws-cloudtrail-lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "eventName-change_type-for-aws-cloudtrail"
+},
+{
+"name": "LOOKUP-object_category-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : LOOKUP-object_category-for-aws-cloudtrail",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "aws_cloudtrail_eventname_lookup"
+},
+{
+"name": "LOOKUP-protocol-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : LOOKUP-protocol-for-aws-cloudtrail",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "vpcflow_protocol_code_lookup"
+},
+{
+"name": "LOOKUP-vendor-product-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : LOOKUP-vendor-product-for-aws-cloudtrail",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"transform": "vendor-product-for-aws-cloudtrail"
+},
+{
+"name": "LOOKUP-vendor-product-for-aws-cloudwatch",
+"origName": "aws:cloudwatch : LOOKUP-vendor-product-for-aws-cloudwatch",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"transform": "vendor-product-for-aws-cloudtrail"
+},
+{
+"name": "LOOKUP-guardduty-category",
+"origName": "aws:cloudwatch:guardduty : LOOKUP-guardduty-category",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"transform": "aws_category"
+},
+{
+"lookup.field.input.signature_id": "subject",
+"name": "LOOKUP-guardduty-mitre_technique_id",
+"origName": "aws:cloudwatch:guardduty : LOOKUP-guardduty-mitre_technique_id",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"transform": "aws_gd_mitre_technique_id_lookup"
+},
+{
+"name": "LOOKUP-guardduty-resource-type",
+"origName": "aws:cloudwatch:guardduty : LOOKUP-guardduty-resource-type",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"transform": "aws_gd_finding_types"
+},
+{
+"lookup.field.input.resource_role": "service.resourceRole",
+"lookup.field.input.resource_type": "resource.resourceType",
+"name": "LOOKUP-guardduty-src-dest-type",
+"origName": "aws:cloudwatch:guardduty : LOOKUP-guardduty-src-dest-type",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"transform": "aws-gd-resourceType_lookup"
+},
+{
+"lookup.field.input.resource_role": "detail.service.resourceRole",
+"lookup.field.input.resource_type": "detail.resource.resourceType",
+"name": "LOOKUP-gd-src-type",
+"origName": "aws:cloudwatchlogs:guardduty : LOOKUP-gd-src-type",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"transform": "aws-gd-resourceType_lookup"
+},
+{
+"name": "LOOKUP-guardduty-mitre_technique_id",
+"origName": "aws:cloudwatchlogs:guardduty : LOOKUP-guardduty-mitre_technique_id",
+"overwrite": "0",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty",
+"transform": "aws_gd_mitre_technique_id_lookup"
+},
+{
+"name": "LOOKUP-action",
+"origName": "aws:cloudwatchlogs:vpcflow : LOOKUP-action",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"transform": "vpcflow_action_lookup"
+},
+{
+"name": "LOOKUP-protocol-and-transport",
+"origName": "aws:cloudwatchlogs:vpcflow : LOOKUP-protocol-and-transport",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"transform": "vpcflow_protocol_code_lookup"
+},
+{
+"lookup.field.input.status": "configurationItemStatus",
+"name": "LOOKUP-action",
+"origName": "aws:config : LOOKUP-action",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"transform": "aws_config_action_lookup"
+},
+{
+"lookup.field.input.type": "resourceType",
+"name": "LOOKUP-object_category",
+"origName": "aws:config : LOOKUP-object_category",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config",
+"transform": "aws_config_object_category_lookup"
+},
+{
+"lookup.field.input.status": "configurationItem.configurationItemStatus",
+"name": "LOOKUP-action",
+"origName": "aws:config:notification : LOOKUP-action",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"transform": "aws_config_action_lookup"
+},
+{
+"lookup.field.input.type": "configurationItem.resourceType",
+"name": "LOOKUP-object_category",
+"origName": "aws:config:notification : LOOKUP-object_category",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification",
+"transform": "aws_config_object_category_lookup"
+},
+{
+"name": "LOOKUP-sizeToAttributes",
+"origName": "aws:description : LOOKUP-sizeToAttributes",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"transform": "sizeToAttributesLookup"
+},
+{
+"lookup.field.input.status": "ELBStatusCode",
+"lookup.field.output.status_description": "action",
+"name": "LOOKUP-awb_action_lookup",
+"origName": "aws:elb:accesslogs : LOOKUP-awb_action_lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"transform": "aws_web_action_lookup"
+},
+{
+"name": "LOOKUP-aws_inspector_v2_type",
+"origName": "aws:inspector:v2:findings : LOOKUP-aws_inspector_v2_type",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"transform": "aws_inspector_v2_type_lookup"
+},
+{
+"lookup.field.input.instance_type": "InstanceType",
+"name": "LOOKUP-sizeToAttributes",
+"origName": "aws:metadata : LOOKUP-sizeToAttributes",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata",
+"transform": "sizeToAttributesLookup"
+},
+{
+"lookup.field.input.status": "HTTPStatus",
+"lookup.field.output.status_description": "action",
+"name": "LOOKUP-awb_action_lookup",
+"origName": "aws:s3 : LOOKUP-awb_action_lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"transform": "aws_web_action_lookup"
+},
+{
+"lookup.field.input.status": "http_status",
+"lookup.field.output.status_description": "action",
+"name": "LOOKUP-awb_action_lookup",
+"origName": "aws:s3:accesslogs : LOOKUP-awb_action_lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"transform": "aws_web_action_lookup"
+}
+]

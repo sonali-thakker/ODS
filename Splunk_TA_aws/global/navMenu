@@ -1,0 +1,8 @@
+[
+{
+"eai:data": "<nav search_view=\"search\" color=\"#65A637\">\n\n<view name=\"inputs\" default=\"true\" label=\"Inputs\" />\n<view name=\"configuration\" default=\"false\" label=\"Configuration\" />\n<view name=\"search\" default=\"false\" label=\"Search\" />\n<collection label=\"Health Check\">\n    <view name=\"health_overview\" />\n    <view name=\"resource_utilization\" />\n    <view name=\"s3_health_details\" />\n</collection>\n\n</nav>",
+"name": "default",
+"owner": "nobody",
+"sharing": "global"
+}
+]

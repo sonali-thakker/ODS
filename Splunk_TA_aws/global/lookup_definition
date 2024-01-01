@@ -1,0 +1,191 @@
+[
+{
+"fields_list": "eventName,errorCode,action,status",
+"filename": "aws_cloudtrail_action_status.csv",
+"match_type": "WILDCARD(errorCode)",
+"max_matches": "1",
+"name": "aws-cloudtrail-action-status-lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "resource_type,resource_role,src_type,dest_type",
+"filename": "aws_gd_resourceType_lookup.csv",
+"max_matches": "1",
+"min_matches": "0",
+"name": "aws-gd-resourceType_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "subject,category",
+"filename": "aws_firehose_kinesis_category.csv",
+"name": "aws_category",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "eventName,object_category",
+"filename": "aws_cloudtrail_eventname_lookup.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_cloudtrail_eventname_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "status,action",
+"filename": "aws_config_action_lookup.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_config_action_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "type,object_category",
+"filename": "aws_config_object_category_lookup.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_config_object_category_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "finding_category,resource_type",
+"filename": "aws_findings.csv",
+"name": "aws_gd_finding_types",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "signature_id,mitre_technique_id",
+"filename": "aws_guardduty_mitre_technique_id_lookup.csv",
+"max_matches": "3",
+"min_matches": "1",
+"name": "aws_gd_mitre_technique_id_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "-",
+"fields_list": "sourcetype,ErrorCode,ErrorDetail,PossibleReason,PossibleResolution",
+"filename": "aws_error_resolutions.csv",
+"match_type": "WILDCARD(sourcetype),WILDCARD(ErrorCode),WILDCARD(ErrorDetail)",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_health_error_resolutions_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "uncategorized",
+"fields_list": "ErrorCode,ErrorDetail,sourcetype,ErrorType",
+"filename": "aws_health_error_type.csv",
+"match_type": "WILDCARD(ErrorCode),WILDCARD(ErrorDetail),WILDCARD(sourcetype)",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_health_error_type_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "-",
+"fields_list": "sourcetype,message,PossibleReason,PossibleResolution",
+"filename": "aws_warning_resolutions.csv",
+"match_type": "WILDCARD(sourcetype),WILDCARD(message)",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_health_warning_resolutions_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "severity,type",
+"filename": "aws_inspector_v2_type_620.csv",
+"name": "aws_inspector_v2_type_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "sourcetype,modinput",
+"filename": "aws_log_sourcetype_modinput.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "aws_log_sourcetype_modinput_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "status,status_description,status_type",
+"filename": "aws_web_action_lookup.csv",
+"max_matches": "1",
+"name": "aws_web_action_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "eventSource,change_type",
+"filename": "aws_cloudtrail_changetype.csv",
+"name": "change_type-for-aws-cloudtrail",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "x_edge_location,edge_location_name",
+"filename": "aws_cloudfront_edge_location_lookup.csv",
+"match_type": "WILDCARD(x_edge_location)",
+"max_matches": "1",
+"min_matches": "1",
+"name": "cloudfront_edge_location_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "eventName,change_type",
+"filename": "aws_cloudtrail_eventName_changeType.csv",
+"name": "eventName-change_type-for-aws-cloudtrail",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "instance_type,cpu_cores,mem_capacity",
+"filename": "aws_vm_size_to_resources.csv",
+"name": "sizeToAttributesLookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"fields_list": "sourcetype,vendor,product,app",
+"filename": "aws_vendor_product_aws_cloudtrail.csv",
+"name": "vendor-product-for-aws-cloudtrail",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "vpcflow_action,action",
+"filename": "aws_vpcflow_action_lookup.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "vpcflow_action_lookup",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"default_match": "unknown",
+"fields_list": "protocol_code,protocol,transport,protocol_full_name",
+"filename": "aws_vpcflow_protocol_code_lookup.csv",
+"max_matches": "1",
+"min_matches": "1",
+"name": "vpcflow_protocol_code_lookup",
+"owner": "nobody",
+"sharing": "global"
+}
+]

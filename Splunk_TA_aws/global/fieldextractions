@@ -1,0 +1,200 @@
+[
+{
+"name": "cloudfront_web_extracy",
+"origName": "aws:cloudfront:accesslogs : REPORT-cloudfront_web_extracy",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudfront:accesslogs",
+"type": "REPORT",
+"value": "cloudfront_web, cloudfront_rtmp"
+},
+{
+"name": "user-for-aws-cloudtrail-acctmgmt",
+"origName": "aws:cloudtrail : REPORT-user-for-aws-cloudtrail-acctmgmt",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail",
+"type": "REPORT",
+"value": "user-for-aws-cloudtrail-acctmgmt"
+},
+{
+"name": "vm_id",
+"origName": "aws:cloudwatch : EXTRACT-vm_id",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"type": "EXTRACT",
+"value": "InstanceId=\\[(?<vm_id>i-\\S+)\\]"
+},
+{
+"name": "region",
+"origName": "aws:cloudwatch : REPORT-region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch",
+"type": "REPORT",
+"value": "extract-region"
+},
+{
+"name": "aws_guardduty_affectedResources",
+"origName": "aws:cloudwatch:guardduty : REPORT-aws_guardduty_affectedResources",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"type": "REPORT",
+"value": "aws_guardduty_affectedResources, aws_guardduty_key_value, aws_guardduty_count_aws"
+},
+{
+"name": "aws_guardduty_details",
+"origName": "aws:cloudwatch:guardduty : REPORT-aws_guardduty_details",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"type": "REPORT",
+"value": "aws_guardduty_details"
+},
+{
+"name": "aws_guardduty_objects",
+"origName": "aws:cloudwatch:guardduty : REPORT-aws_guardduty_objects",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty",
+"type": "REPORT",
+"value": "aws_guardduty_object"
+},
+{
+"name": "region",
+"origName": "aws:cloudwatchlogs:vpcflow : REPORT-region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"type": "REPORT",
+"value": "extract-region"
+},
+{
+"name": "vpcflowlogs",
+"origName": "aws:cloudwatchlogs:vpcflow : REPORT-vpcflowlogs",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow",
+"type": "REPORT",
+"value": "report-vpcflowlogs-default, report-vpcflowlogs-custom, report-vpcflowlogs-select-all"
+},
+{
+"name": "account_id_and_region",
+"origName": "aws:config:rule : EXTRACT-account_id_and_region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule",
+"type": "EXTRACT",
+"value": "(?P<account_id>\\d+):(?P<region>[\\w-]+) in source"
+},
+{
+"name": "extract_ec2_custom_tag",
+"origName": "aws:description : EXTRACT-extract_ec2_custom_tag",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description",
+"type": "EXTRACT",
+"value": "\\\"tags\\\"\\:\\s*\\{(?P<custom_tag_str>(?:\\\"[^\\\"\\s]+\\\"\\:\\s*\\\"[^\\\"\\s]+\\\"(?:,\\s)?)*)"
+},
+{
+"name": "report_aws_elb_accesslogs",
+"origName": "aws:elb:accesslogs : REPORT-report_aws_elb_accesslogs",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:elb:accesslogs",
+"type": "REPORT",
+"value": "aws_elb_accesslogs_extract_all_fields, aws_elb_request_target_ip_target_port"
+},
+{
+"name": "account_id_and_region",
+"origName": "aws:inspector : EXTRACT-account_id_and_region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector",
+"type": "EXTRACT",
+"value": "(?P<account_id>\\d+):(?P<region>[\\w-]+) in source"
+},
+{
+"name": "aws_inspector_account_and_region",
+"origName": "aws:inspector:v2:findings : REPORT-aws_inspector_account_and_region",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"type": "REPORT",
+"value": "aws_inspector_account_and_region"
+},
+{
+"name": "aws_inspector_dvc",
+"origName": "aws:inspector:v2:findings : REPORT-aws_inspector_dvc",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings",
+"type": "REPORT",
+"value": "aws_inspector_dvc"
+},
+{
+"name": "aws_s3_extract_fields",
+"origName": "aws:s3 : REPORT-aws_s3_extract_fields",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3",
+"type": "REPORT",
+"value": "aws_s3_extract_fields, aws_s3_http_method"
+},
+{
+"name": "s3",
+"origName": "aws:s3:accesslogs : REPORT-s3",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs",
+"type": "REPORT",
+"value": "aws_s3_accesslogs_extract_all_fields"
+},
+{
+"name": "aws-securityhub-id-dest-extract",
+"origName": "aws:securityhub:finding : REPORT-aws-securityhub-id-dest-extract",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding",
+"type": "REPORT",
+"value": "aws-securityhub-dest-instance-extract, aws-securityhub-dest-iam_accesskey-extract, aws-securityhub-dest-s3-extract, aws-securityhub-dest-managed-instance-extract, aws-securityhub-dest-volume-extract, aws-securityhub-dest-security-group-extract, aws-securityhub-dest-vpc-extract, aws_securityhub_account_user_report, aws_securityhub_dest_iam_user_report"
+},
+{
+"name": "elb",
+"origName": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log)) : EXTRACT-elb",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log))",
+"type": "EXTRACT",
+"value": "^\\s*(?P<type>\\S+)(\\s+(?P<timestamp>\\S+))(\\s+(?P<elb>\\S+))(\\s+(?P<client_ip>[\\d.]+):(?P<client_port>\\d+))(\\s+(?P<target>\\S+))(\\s+(?P<request_processing_time>\\S+))(\\s+(?P<target_processing_time>\\S+))(\\s+(?P<response_processing_time>\\S+))(\\s+(?P<elb_status_code>\\S+))(\\s+(?P<target_status_code>\\S+))(\\s+(?P<received_bytes>\\d+))(\\s+(?P<sent_bytes>\\d+))(\\s+\"(?P<request>[^\"]+)\")(\\s+\"(?P<user_agent>[^\"]+)\")(\\s+(?P<ssl_cipher>\\S+))(\\s+(?P<ssl_protocol>\\S+))(\\s+(?P<target_group_arn>\\S+))(\\s+\"(?P<trace_id>[^\"]+)\")(\\s+\"(?P<domain_name>[^\"]+)\")?(\\s+\"(?P<chosen_cert_arn>[^\"]+)\")?(\\s+(?P<matched_rule_priority>\\S+))?(\\s+(?P<request_creation_time>\\S+))?(\\s+\"(?P<actions_executed>[^\"]+)\")?(\\s+\"(?P<redirect_url>[^\"]+)\")?(\\s+\"(?P<error_reason>[^\"]+)\")?"
+},
+{
+"name": "elb-nlb",
+"origName": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log)) : EXTRACT-elb-nlb",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::((...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz)|(...(/|\\\\)\\d+_elasticloadbalancing_*.log.gz(/|\\\\)...(/|\\\\)\\d+_elasticloadbalancing_*.log))",
+"type": "EXTRACT",
+"value": "^\\s*(?P<type>\\S+)(\\s+(?P<log_version>\\S+))(\\s+(?P<timestamp>\\S+))(\\s+(?P<elb>\\S+))(\\s+(?P<listener>\\S+))(\\s+(?P<client_ip>[\\d.]+):(?P<client_port>\\d+))(\\s+(?P<destination_ip>[\\d.]+):(?P<destination_port>\\d+))(\\s+(?P<connection_time>\\S+))(\\s+(?P<tls_handshake_time>\\S+))(\\s+(?P<received_bytes>\\d+))(\\s+(?P<sent_bytes>\\d+))(\\s+(?P<incoming_tls_alert>\\S+))(\\s+(?P<chosen_cert_arn>\\S+))(\\s+(?P<chosen_cert_serial>\\S+))(\\s+(?P<tls_cipher>\\S+))(\\s+(?P<tls_protocol_version>\\S+))(\\s+(?P<tls_named_group>\\S+))(\\s+(?P<domain_name>\\S+))(\\s+(?P<alpn_fe_protocol>\\S+))(\\s+(?P<alpn_be_protocol>\\S+))(\\s+(?P<alpn_client_preference_list>\\S+))"
+},
+{
+"name": "elb",
+"origName": "source::...(/|\\\\)\\d+_elasticloadbalancing_*.log : EXTRACT-elb",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::...(/|\\\\)\\d+_elasticloadbalancing_*.log",
+"type": "EXTRACT",
+"value": "^\\s*(?P<timestamp>\\S+)(\\s+(?P<elb>\\S+))(\\s+(?P<client_ip>[\\d.]+):(?P<client_port>\\d+))(\\s+(?P<backend>\\S+))(\\s+(?P<request_processing_time>\\S+))(\\s+(?P<backend_processing_time>\\S+))(\\s+(?P<response_processing_time>\\S+))(\\s+(?P<elb_status_code>\\S+))(\\s+(?P<backend_status_code>\\S+))(\\s+(?P<received_bytes>\\d+))(\\s+(?P<sent_bytes>\\d+))(\\s+\"(?P<request>[^\"]+)\")(\\s+\"(?P<user_agent>[^\"]+)\")(\\s+(?P<ssl_cipher>\\S+))(\\s+(?P<ssl_protocol>\\S+))"
+},
+{
+"name": "traceback_and_error",
+"origName": "source::...(/|\\\\)var(/|\\\\)log(/|\\\\)splunk(/|\\\\)*aws_*.log* : EXTRACT-traceback_and_error",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::...(/|\\\\)var(/|\\\\)log(/|\\\\)splunk(/|\\\\)*aws_*.log*",
+"type": "EXTRACT",
+"value": "(Traceback \\(most recent call last\\)):(?P<Traceback>[\\S|\\s]*\\S(\\r\\n|\\n|\\r)(?P<ErrorCode>[^:]*):(?P<ErrorDetail>.*)$)"
+}
+]

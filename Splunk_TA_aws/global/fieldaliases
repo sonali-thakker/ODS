@@ -1,0 +1,1410 @@
+[
+{
+"alias.0.PayerAccountId": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:billing : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:billing"
+},
+{
+"alias.0.userIdentity.accountId": "user_group_id",
+"name": "accountId_user_group_id",
+"origName": "aws:cloudtrail : FIELDALIAS-accountId_user_group_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.awsRegion": "region",
+"name": "awsRegion-for-aws-cloudtrail_region",
+"origName": "aws:cloudtrail : FIELDALIAS-awsRegion-for-aws-cloudtrail_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.awsRegion": "vendor_region",
+"name": "awsRegion-for-aws-cloudtrail_vendor_region",
+"origName": "aws:cloudtrail : FIELDALIAS-awsRegion-for-aws-cloudtrail_vendor_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.errorCode": "result_id",
+"name": "errorCode-for-aws-cloudtrail-result_id",
+"origName": "aws:cloudtrail : FIELDALIAS-errorCode-for-aws-cloudtrail-result_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.errorMessage": "reason",
+"name": "errorMessage-for-aws-cloudtrail-reason",
+"origName": "aws:cloudtrail : FIELDALIAS-errorMessage-for-aws-cloudtrail-reason",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.errorMessage": "result",
+"name": "errorMessage-for-aws-cloudtrail-result",
+"origName": "aws:cloudtrail : FIELDALIAS-errorMessage-for-aws-cloudtrail-result",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.eventName": "command",
+"name": "eventName-for-aws-cloudtrail-command",
+"origName": "aws:cloudtrail : FIELDALIAS-eventName-for-aws-cloudtrail-command",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.eventName": "signature",
+"name": "eventName-for-aws-cloudtrail_signature",
+"origName": "aws:cloudtrail : FIELDALIAS-eventName-for-aws-cloudtrail_signature",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.eventSource": "dvc",
+"name": "eventSource-for-aws-cloudtrail-dvc",
+"origName": "aws:cloudtrail : FIELDALIAS-eventSource-for-aws-cloudtrail-dvc",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.eventTime": "start_time",
+"name": "eventTime-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : FIELDALIAS-eventTime-for-aws-cloudtrail",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.eventType": "app",
+"name": "eventType-for-aws-cloudtrail-app",
+"origName": "aws:cloudtrail : FIELDALIAS-eventType-for-aws-cloudtrail-app",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.requestParameters": "desc",
+"name": "requestParameters-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : FIELDALIAS-requestParameters-for-aws-cloudtrail",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.requestParameters.instancesSet.items{}.imageId": "image_id",
+"name": "requestParameters.instancesSet.items{}.imageId-for-aws-cloudtrail-image_id",
+"origName": "aws:cloudtrail : FIELDALIAS-requestParameters.instancesSet.items{}.imageId-for-aws-cloudtrail-image_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.requestParameters.instanceType": "instance_type",
+"name": "requestParameters.instanceType-for-aws-cloudtrail-instance_type",
+"origName": "aws:cloudtrail : FIELDALIAS-requestParameters.instanceType-for-aws-cloudtrail-instance_type",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.responseElements.credentials.accessKeyId": "temp_access_key",
+"name": "responseElements.credentials.accessKeyId-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : FIELDALIAS-responseElements.credentials.accessKeyId-for-aws-cloudtrail",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.sourceIPAddress": "src",
+"name": "sourceIPAddress-for-aws-cloudtrail-src",
+"origName": "aws:cloudtrail : FIELDALIAS-sourceIPAddress-for-aws-cloudtrail-src",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.sourceIPAddress": "src_ip",
+"name": "sourceIPAddress-for-aws-cloudtrail-src_ip",
+"origName": "aws:cloudtrail : FIELDALIAS-sourceIPAddress-for-aws-cloudtrail-src_ip",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.userIdentity.accessKeyId": "user_access_key",
+"name": "userIdentity.accessKeyId-for-aws-cloudtrail",
+"origName": "aws:cloudtrail : FIELDALIAS-userIdentity.accessKeyId-for-aws-cloudtrail",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudtrail"
+},
+{
+"alias.0.account_id": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:cloudwatch : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch"
+},
+{
+"alias.0.accountId": "aws_account_id",
+"name": "accountid",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-accountid",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.networkInterfaces{}.privateDnsName": "attacker_domain",
+"name": "aob_gen_aws_cloudwatch_guardduty_alias_2",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aob_gen_aws_cloudwatch_guardduty_alias_2",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.networkInterfaces{}.privateIpAddresses{}.privateIpAddress": "dest_ip_internal",
+"name": "aob_gen_aws_cloudwatch_guardduty_alias_3",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aob_gen_aws_cloudwatch_guardduty_alias_3",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.networkInterfaces{}.vpcId": "dest_zone",
+"name": "aob_gen_aws_cloudwatch_guardduty_alias_5",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aob_gen_aws_cloudwatch_guardduty_alias_5",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.availabilityZone": "aws_az",
+"name": "aob_gen_aws_cloudwatch_guardduty_alias_6",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aob_gen_aws_cloudwatch_guardduty_alias_6",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.networkInterfaces{}.publicIp": "dest_ip",
+"name": "aob_gen_aws_cloudwatch_guardduty_alias_7",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aob_gen_aws_cloudwatch_guardduty_alias_7",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.description": "body",
+"name": "aws-guardduty-body",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aws-guardduty-body",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.severity": "severity_id",
+"name": "aws-guardduty-severity_id",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aws-guardduty-severity_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.accountId": "vendor_account",
+"name": "aws-guardduty-vendor_account",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aws-guardduty-vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.region": "vendor_region",
+"name": "aws-guardduty-vendor_region",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-aws-guardduty-vendor_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.accessKeyDetails.userName": "ct_user",
+"name": "ctuser",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-ctuser",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.detectorId": "detectorId",
+"name": "detectorId",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-detectorId",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.id": "findingId",
+"name": "findingId",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-findingId",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.type": "finding_category",
+"name": "findingType",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-findingType",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.awsApiCallAction.remoteIpDetails.ipAddressV4": "src_ip",
+"name": "gd-attacker-ip1",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-attacker-ip1",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.networkConnectionAction.remoteIpDetails.ipAddressV4": "src_ip",
+"name": "gd-attacker-ip2",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-attacker-ip2",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.portProbeAction.portProbeDetails{}.remoteIpDetails.ipAddressV4": "src_ip",
+"name": "gd-attacker-ip3",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-attacker-ip3",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.awsApiCallAction.remoteIpDetails.ipAddressV4": "src_ip",
+"name": "gd-attacker-ip4",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-attacker-ip4",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.type": "category",
+"name": "gd-category",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-category",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.dnsRequestAction.domain": "outbound_attacker_domain",
+"name": "gd-ec2-attacker-domain",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-ec2-attacker-domain",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.instanceDetails.instanceId": "instanceId",
+"name": "gd-resource-agg-inst",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-resource-agg-inst",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.accessKeyDetails.userName": "userName",
+"name": "gd-resource-agg-user",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-resource-agg-user",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.type": "subject",
+"name": "gd-type-subj",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-gd-type-subj",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.awsApiCallAction.remoteIpDetails.geoLocation.lat": "lat",
+"alias.1.service.action.networkConnectionAction.remoteIpDetails.geoLocation.lat": "lat",
+"alias.2.service.action.portProbeAction.portProbeDetails{}.remoteIpDetails.geoLocation.lat": "lat",
+"name": "lat",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-lat",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.service.action.awsApiCallAction.remoteIpDetails.geoLocation.lon": "lon",
+"alias.1.service.action.networkConnectionAction.remoteIpDetails.geoLocation.lon": "lon",
+"alias.2.service.action.portProbeAction.portProbeDetails{}.remoteIpDetails.geoLocation.lon": "lon",
+"name": "lon",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-lon",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.type": "raw_gd_type",
+"name": "raw_gd_type",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-raw_gd_type",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.resource.accessKeyDetails.userName": "user",
+"name": "user",
+"origName": "aws:cloudwatch:guardduty : FIELDALIAS-user",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatch:guardduty"
+},
+{
+"alias.0.detail.description": "body",
+"name": "aws-guardduty-body",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-body",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.description": "description",
+"name": "aws-guardduty-description",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.id": "id",
+"name": "aws-guardduty-id",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.severity": "severity_id",
+"name": "aws-guardduty-severity_id",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-severity_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.title": "signature",
+"name": "aws-guardduty-signature",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-signature",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.type": "signature_id",
+"name": "aws-guardduty-signature_id",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-signature_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.accountId": "vendor_account",
+"name": "aws-guardduty-vendor_account",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.region": "vendor_region",
+"name": "aws-guardduty-vendor_region",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-aws-guardduty-vendor_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.type": "finding_category",
+"name": "findingCategory",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-findingCategory",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.type": "subject",
+"name": "gd-type-subj",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-gd-type-subj",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.detail.type": "raw_gd_type",
+"name": "raw_gd_type",
+"origName": "aws:cloudwatchlogs:guardduty : FIELDALIAS-raw_gd_type",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:guardduty"
+},
+{
+"alias.0.account_id": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.dest_ip": "dest",
+"name": "dest",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-dest",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.interface_id": "dvc",
+"name": "dvc",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-dvc",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.src_ip": "src",
+"name": "src",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-src",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.account_id": "user_id",
+"name": "user_id",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-user_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.account_id": "vendor_account",
+"name": "vendor_account",
+"origName": "aws:cloudwatchlogs:vpcflow : FIELDALIAS-vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:cloudwatchlogs:vpcflow"
+},
+{
+"alias.0.awsAccountId": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:config : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.resourceType": "dest",
+"name": "dest",
+"origName": "aws:config : FIELDALIAS-dest",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.resourceId": "object",
+"name": "object",
+"origName": "aws:config : FIELDALIAS-object",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.resourceId": "object_id",
+"name": "object_id",
+"origName": "aws:config : FIELDALIAS-object_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.ARN": "object_path",
+"name": "object_path",
+"origName": "aws:config : FIELDALIAS-object_path",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.awsRegion": "region",
+"name": "region-for-aws-config",
+"origName": "aws:config : FIELDALIAS-region-for-aws-config",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.configurationItemStatus": "result",
+"name": "result",
+"origName": "aws:config : FIELDALIAS-result",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.awsAccountId": "vendor_account",
+"name": "vendor_account",
+"origName": "aws:config : FIELDALIAS-vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config"
+},
+{
+"alias.0.configurationItem.awsAccountId": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:config:notification : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.resourceType": "dest",
+"name": "dest",
+"origName": "aws:config:notification : FIELDALIAS-dest",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.resourceId": "object",
+"name": "object",
+"origName": "aws:config:notification : FIELDALIAS-object",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.resourceType": "object_attrs",
+"name": "object_attrs",
+"origName": "aws:config:notification : FIELDALIAS-object_attrs",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.resourceId": "object_id",
+"name": "object_id",
+"origName": "aws:config:notification : FIELDALIAS-object_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.awsRegion": "region",
+"name": "region-for-aws-config",
+"origName": "aws:config:notification : FIELDALIAS-region-for-aws-config",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.configurationItemStatus": "result",
+"name": "result",
+"origName": "aws:config:notification : FIELDALIAS-result",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.configurationItem.configuration.masterUsername": "user",
+"name": "user",
+"origName": "aws:config:notification : FIELDALIAS-user",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:notification"
+},
+{
+"alias.0.account_id": "user_id",
+"name": "account_id_as_user_id",
+"origName": "aws:config:rule : FIELDALIAS-account_id_as_user_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.account_id": "aws_account_id",
+"name": "aws-account-id",
+"origName": "aws:config:rule : FIELDALIAS-aws-account-id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.ConfigRuleInvokedTime": "time",
+"name": "config_rule_invoked_time_as_time",
+"origName": "aws:config:rule : FIELDALIAS-config_rule_invoked_time_as_time",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.ConfigRuleName": "name",
+"name": "config_rule_name_as_name",
+"origName": "aws:config:rule : FIELDALIAS-config_rule_name_as_name",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.ConfigRuleState": "status",
+"name": "config_rule_state_as_status",
+"origName": "aws:config:rule : FIELDALIAS-config_rule_state_as_status",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.Description": "body",
+"name": "description_as_body",
+"origName": "aws:config:rule : FIELDALIAS-description_as_body",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.Description": "description",
+"name": "description_as_description",
+"origName": "aws:config:rule : FIELDALIAS-description_as_description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.FirstActivatedTime": "time",
+"name": "first_activated_time_as_time",
+"origName": "aws:config:rule : FIELDALIAS-first_activated_time_as_time",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.Source.Owner": "src_user",
+"name": "source_owner_as_src_user",
+"origName": "aws:config:rule : FIELDALIAS-source_owner_as_src_user",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:config:rule"
+},
+{
+"alias.0.zone": "availability_zone",
+"name": "availabiity_zone",
+"origName": "aws:description : FIELDALIAS-availabiity_zone",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.CreateDate": "startDate",
+"name": "CreateDate-for-aws-description",
+"origName": "aws:description : FIELDALIAS-CreateDate-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.image.attributes.name": "image_name",
+"name": "image_name-for-assets-lookup",
+"origName": "aws:description : FIELDALIAS-image_name-for-assets-lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.UserId": "user_id",
+"name": "user-id-for-aws-description",
+"origName": "aws:description : FIELDALIAS-user-id-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.UserName": "user_name",
+"name": "username-for-aws-description",
+"origName": "aws:description : FIELDALIAS-username-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.tags.Name": "vm_name",
+"name": "vm_name",
+"origName": "aws:description : FIELDALIAS-vm_name",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.instance_type": "vm_size",
+"name": "vm_size",
+"origName": "aws:description : FIELDALIAS-vm_size",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:description"
+},
+{
+"alias.0.account_id": "aws_account_id",
+"name": "account_id_as_aws_account_id",
+"origName": "aws:inspector : FIELDALIAS-account_id_as_aws_account_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.account_id": "user_id",
+"name": "account_id_as_user_id",
+"origName": "aws:inspector : FIELDALIAS-account_id_as_user_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.account_id": "vendor_account",
+"name": "account_id_as_vendor_account",
+"origName": "aws:inspector : FIELDALIAS-account_id_as_vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.createdAt": "time",
+"name": "created_at_as_time",
+"origName": "aws:inspector : FIELDALIAS-created_at_as_time",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.description": "body",
+"name": "description_as_body",
+"origName": "aws:inspector : FIELDALIAS-description_as_body",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.numericSeverity": "severity_id",
+"name": "numericSeverity_as_severity_id",
+"origName": "aws:inspector : FIELDALIAS-numericSeverity_as_severity_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.service": "app",
+"name": "service_as_app",
+"origName": "aws:inspector : FIELDALIAS-service_as_app",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.state": "status",
+"name": "state_as_status",
+"origName": "aws:inspector : FIELDALIAS-state_as_status",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.title": "subject",
+"name": "title_as_subject",
+"origName": "aws:inspector : FIELDALIAS-title_as_subject",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector"
+},
+{
+"alias.0.awsAccountId": "vendor_account",
+"name": "awsAccountId_as_vendor_account",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-awsAccountId_as_vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.findingArn": "id",
+"name": "findingArn_as_id",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-findingArn_as_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.inspector_dvc": "dvc",
+"name": "inspector_dvc_as_dvc",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-inspector_dvc_as_dvc",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.inspectorScore": "cvss",
+"name": "inspectorScore_as_cvss",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-inspectorScore_as_cvss",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.inspectorScore": "severity_id",
+"name": "inspectorScore_as_severity_id",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-inspectorScore_as_severity_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.resources{}.id": "dest",
+"name": "resources_id_as_dest",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-resources_id_as_dest",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.resources{}.region": "vendor_region",
+"name": "resources_region_as_vendor_region",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-resources_region_as_vendor_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.packageVulnerabilityDetails.sourceUrl": "url",
+"name": "sourceUrl_as_url",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-sourceUrl_as_url",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.title": "signature",
+"name": "title_as_signature",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-title_as_signature",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.type": "category",
+"name": "type_as_category",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-type_as_category",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.packageVulnerabilityDetails.vulnerabilityId": "cve",
+"name": "vulnerabilityId_as_cve",
+"origName": "aws:inspector:v2:findings : FIELDALIAS-vulnerabilityId_as_cve",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:inspector:v2:findings"
+},
+{
+"alias.0.AvailabilityZone": "availability_zone",
+"name": "availabiity_zone",
+"origName": "aws:metadata : FIELDALIAS-availabiity_zone",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.CreateDate": "startDate",
+"name": "CreateDate-for-aws-description",
+"origName": "aws:metadata : FIELDALIAS-CreateDate-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.ImageId": "image_id",
+"name": "image_id_for_aws_metadata",
+"origName": "aws:metadata : FIELDALIAS-image_id_for_aws_metadata",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.'Image.Attributes.Name'": "image_name",
+"name": "image_name-for-assets-lookup",
+"origName": "aws:metadata : FIELDALIAS-image_name-for-assets-lookup",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.Region": "region",
+"name": "region-for-aws-metadata",
+"origName": "aws:metadata : FIELDALIAS-region-for-aws-metadata",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.ImageId": "snapshot",
+"name": "snapshot-for-aws-metadata",
+"origName": "aws:metadata : FIELDALIAS-snapshot-for-aws-metadata",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.State.Name": "status",
+"name": "status-for-aws-metadata",
+"origName": "aws:metadata : FIELDALIAS-status-for-aws-metadata",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.LaunchTime": "time",
+"name": "time-for-aws-metadata",
+"origName": "aws:metadata : FIELDALIAS-time-for-aws-metadata",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.AccountId": "user_id",
+"name": "user-id-for-aws-description",
+"origName": "aws:metadata : FIELDALIAS-user-id-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.UserName": "user_name",
+"name": "username-for-aws-description",
+"origName": "aws:metadata : FIELDALIAS-username-for-aws-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.'Tags.Name'": "vm_name",
+"name": "vm_name",
+"origName": "aws:metadata : FIELDALIAS-vm_name",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.InstanceType": "vm_size",
+"name": "vm_size",
+"origName": "aws:metadata : FIELDALIAS-vm_size",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:metadata"
+},
+{
+"alias.0.host_header": "app",
+"name": "app",
+"origName": "aws:s3:accesslogs : FIELDALIAS-app",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs"
+},
+{
+"alias.0.host_header": "dest",
+"name": "dest",
+"origName": "aws:s3:accesslogs : FIELDALIAS-dest",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs"
+},
+{
+"alias.0.total_time": "duration",
+"name": "duration",
+"origName": "aws:s3:accesslogs : FIELDALIAS-duration",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs"
+},
+{
+"alias.0.key": "file_path",
+"name": "file_path",
+"origName": "aws:s3:accesslogs : FIELDALIAS-file_path",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:s3:accesslogs"
+},
+{
+"alias.0.Description": "body",
+"name": "aws-securityhub-body",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-body",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Description": "description",
+"name": "aws-securityhub-description",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-description",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Resources{}.Details.AwsEc2Instance.IpV4Addresses{}": "dest_ip",
+"name": "aws-securityhub-dest_ip",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-dest_ip",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Resources{}.Type": "dest_type",
+"name": "aws-securityhub-dest_type",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-dest_type",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Severity.Normalized": "severity_id",
+"name": "aws-securityhub-severity_id",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-severity_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Title": "signature",
+"name": "aws-securityhub-signature",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-signature",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.GeneratorId": "signature_id",
+"name": "aws-securityhub-signature_id",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-signature_id",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Title": "subject",
+"name": "aws-securityhub-subject",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-subject",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.AwsAccountId": "vendor_account",
+"name": "aws-securityhub-vendor_account",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-vendor_account",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.Resources{}.Region": "vendor_region",
+"name": "aws-securityhub-vendor_region",
+"origName": "aws:securityhub:finding : FIELDALIAS-aws-securityhub-vendor_region",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "aws:securityhub:finding"
+},
+{
+"alias.0.AvailabilityZone": "availability_zone",
+"name": "availability_zone_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-availability_zone_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.CurrencyCode": "currency_code",
+"name": "currency_code_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-currency_code_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.ProductDescription": "description",
+"name": "description_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-description_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.Duration": "duration",
+"name": "duration_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-duration_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.End": "end",
+"name": "end_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-end_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.FixedPrice": "fixed_price",
+"name": "fixed_price_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-fixed_price_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.ReservedInstancesId": "id",
+"name": "id_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-id_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.InstanceCount": "instance_count",
+"name": "instance_count_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-instance_count_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.InstanceTenancy": "instance_tenancy",
+"name": "instance_tenancy_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-instance_tenancy_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.InstanceType": "instance_type",
+"name": "instance_type_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-instance_type_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.OfferingType": "offering_type",
+"name": "offering_type_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-offering_type_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.Start": "start",
+"name": "start_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-start_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.State": "state",
+"name": "state_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-state_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+},
+{
+"alias.0.UsagePrice": "usage_price",
+"name": "usage_price_alias",
+"origName": "source::*:ec2_reserved_instances : FIELDALIAS-usage_price_alias",
+"overwrite": "1",
+"owner": "nobody",
+"sharing": "global",
+"stanza": "source::*:ec2_reserved_instances"
+}
+]

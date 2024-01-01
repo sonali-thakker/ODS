@@ -1,0 +1,20 @@
+[
+{
+"definition": "index=summary sourcetype=aws:addon:account source=Splunk_TA_aws",
+"disabled": "0",
+"eai:appName": "Splunk_TA_aws",
+"eai:userName": "nobody",
+"name": "aws-account-index",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"definition": "index=summary sourcetype=aws:addon:input source=Splunk_TA_aws",
+"disabled": "0",
+"eai:appName": "Splunk_TA_aws",
+"eai:userName": "nobody",
+"name": "aws-input-index",
+"owner": "nobody",
+"sharing": "global"
+}
+]

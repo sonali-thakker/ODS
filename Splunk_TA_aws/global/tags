@@ -1,0 +1,378 @@
+[
+{
+"name": "eventtype=aws_cloudfront_accesslogs_web",
+"owner": "nobody",
+"sharing": "global",
+"web": "enabled"
+},
+{
+"account": "enabled",
+"change": "enabled",
+"cloud": "enabled",
+"management": "enabled",
+"name": "eventtype=aws_cloudtrail_acctmgmt",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"assume_role": "enabled",
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_assumeRole_auth",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_auth",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"authentication": "enabled",
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_auth_privileged",
+"owner": "nobody",
+"privileged": "enabled",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_change",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"authentication": "enabled",
+"default": "enabled",
+"name": "eventtype=aws_cloudtrail_consolelogin_auth",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_delete_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_ec2_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"cloud": "enabled",
+"endpoint": "enabled",
+"name": "eventtype=aws_cloudtrail_endpoint_change",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"error": "enabled",
+"name": "eventtype=aws_cloudtrail_errors",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_iam_change",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"account": "enabled",
+"change": "enabled",
+"management": "enabled",
+"name": "eventtype=aws_cloudtrail_iam_change_acctmgmt",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"cloud": "enabled",
+"instance": "enabled",
+"name": "eventtype=aws_cloudtrail_instance",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"multifactor": "enabled",
+"name": "eventtype=aws_cloudtrail_multifactor_auth",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"cloud": "enabled",
+"name": "eventtype=aws_cloudtrail_notable_network_events",
+"network": "enabled",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"cloud_virtualization": "enabled",
+"name": "eventtype=aws_cloudwatch_ec2_perf",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global"
+},
+{
+"cpu": "enabled",
+"name": "eventtype=aws_cloudwatch_ec2_perf_cpu",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"memory": "enabled",
+"name": "eventtype=aws_cloudwatch_ec2_perf_memory",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "eventtype=aws_cloudwatch_ec2_perf_network",
+"network": "enabled",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "eventtype=aws_cloudwatch_ec2_perf_storage",
+"owner": "nobody",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "eventtype=aws_cloudwatch_ec2_perf_vm",
+"owner": "nobody",
+"sharing": "global",
+"virtualmachine": "enabled"
+},
+{
+"change": "enabled",
+"name": "eventtype=aws_config_notification",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"name": "eventtype=aws_config_rule_compliancedetail_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "eventtype=aws_config_rule_compliancesummary_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"name": "eventtype=aws_config_rule_evaluationstatus_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"name": "eventtype=aws_config_rule_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"change": "enabled",
+"name": "eventtype=aws_config_snapshot",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"cloud_virtualization": "enabled",
+"inventory": "enabled",
+"name": "eventtype=aws_ec2_inventory",
+"owner": "nobody",
+"sharing": "global",
+"snapshot": "enabled",
+"virtual": "enabled",
+"virtualmachine": "enabled"
+},
+{
+"name": "eventtype=aws_elb_accesslogs_web",
+"owner": "nobody",
+"sharing": "global",
+"web": "enabled"
+},
+{
+"alert": "enabled",
+"name": "eventtype=aws_inspector_finding_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"name": "eventtype=aws_inspector_v2_network_reachability_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "eventtype=aws_inspector_v2_package_vulnerability_events",
+"owner": "nobody",
+"report": "enabled",
+"sharing": "global",
+"vulnerability": "enabled"
+},
+{
+"name": "eventtype=aws_s3_storage_accesslogs",
+"owner": "nobody",
+"sharing": "global",
+"storage": "enabled",
+"web": "enabled"
+},
+{
+"name": "eventtype=aws_s3_web_storage",
+"owner": "nobody",
+"sharing": "global",
+"storage": "enabled",
+"web": "enabled"
+},
+{
+"cloud": "enabled",
+"name": "eventtype=guard_duty_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"name": "eventtype=guard_duty_events_alert",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"attack": "enabled",
+"ids": "enabled",
+"name": "eventtype=guard_duty_events_ids",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"alert": "enabled",
+"cloud": "enabled",
+"name": "eventtype=securityhub_events",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cloud": "enabled",
+"communicate": "enabled",
+"name": "eventtype=vpcflow",
+"network": "enabled",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"cpu": "enabled",
+"name": "metric_name=CPUUtilization",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global"
+},
+{
+"database": "enabled",
+"instance": "enabled",
+"name": "metric_name=DatabaseConnections",
+"owner": "nobody",
+"sharing": "global",
+"stats": "enabled"
+},
+{
+"name": "metric_name=DiskReadOps",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=DiskWriteOps",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"memory": "enabled",
+"name": "metric_name=FreeableMemory",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global"
+},
+{
+"name": "metric_name=FreeStorageSpace",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=NetworkIn",
+"network": "enabled",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "metric_name=NetworkOut",
+"network": "enabled",
+"owner": "nobody",
+"sharing": "global"
+},
+{
+"name": "metric_name=ReadIOPS",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=ReadLatency",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"memory": "enabled",
+"name": "metric_name=SwapUsage",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global"
+},
+{
+"name": "metric_name=VolumeReadOps",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=VolumeWriteOps",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=WriteIOPS",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+},
+{
+"name": "metric_name=WriteLatency",
+"owner": "nobody",
+"performance": "enabled",
+"sharing": "global",
+"storage": "enabled"
+}
+]

@@ -1,0 +1,875 @@
+[
+{
+"color": "none",
+"name": "aws_billing_detail_report",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:billing\" source=*aws-billing-detailed-line-items* source!=*AWSMarketplace*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_billing_monthly_report",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:billing\" (source=*aws-billing-csv* OR source=*aws-cost-allocation*) source!=*AWSMarketplace*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_billing_report",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:billing\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudfront_accesslogs_web",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudfront:accesslogs\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_acctmgmt",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\"  eventName IN (\"ListSigningCertificates\",\"ListAccessKeys\",\"ListAccountAliases\",\"GetUser\",\"GetAccountSummary\") errorCode=\"*UnauthorizedOperation\" OR errorCode=\"AccessDenied\" OR errorCode=\"AuthFailure\" OR errorCode=\"OperationNotPermitted\" NOT (eventName=\"RunInstances\" OR eventName=\"CreateVpc\" OR eventName=\"CreateVolume\" OR eventName=\"AllocateAddress\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_assumeRole_auth",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (eventName=\"AssumeRole\" OR eventName=\"AssumeRoleWithSAML\" OR eventName=\"AssumeRoleWithWebIdentity\") AND \"userIdentity.type\" != \"AWSService\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_auth",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" eventName=\"AssumeRole*\" OR eventName=\"GetFederationToken\" OR eventName=\"GetSessionToken\" OR eventName=\"ConsoleLogin\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_auth_privileged",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (eventName=\"ConsoleLogin\" AND (NOT additionalEventData.LoginTo=*))",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_change",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" eventName=\"Create*\" OR eventName IN (\"ListRoles\",\"ListAliases\",\"PutBucketAcl\" ,\"GetBucketEncryption\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_consolelogin_auth",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (eventName=\"ConsoleLogin\" additionalEventData.LoginTo=*)",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_delete_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" *Delete* OR *Remove* OR *Reboot*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_ec2_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" eventName=\"RunInstances\" OR eventName=\"StartInstances\" OR eventName=\"StopInstances\" OR eventName=\"TerminateInstances\" OR eventName=\"RebootInstances\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_endpoint_change",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" eventName=\"DeleteEndpoint\" OR eventName=\"CreatePlatformEndpoint\" OR eventName=\"CreateVolume\" OR eventName=\"DeleteVolume\" OR eventName=\"AttachVolume\" OR eventName=\"DetachVolume\" OR eventName=\"DeleteBucket\" OR eventName=\"CreateBucket\" OR eventName=\"PutBucketPublicAccessBlock\" OR eventName=\"PutObject\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_errors",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (errorCode=\"*\" errorCode!=\"success\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_iam_change",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (eventSource=*iam*.amazonaws.com OR eventName=PutBucketAcl) eventName!=*get* AND eventName!=*list* AND eventName!=*describe*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_iam_change_acctmgmt",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" (eventSource=*iam*.amazonaws.com) eventName!=*get* AND eventName!=*list* AND eventName!=*describe*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_instance",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" object_category=\"instance\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_multifactor_auth",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" \"additionalEventData.MFAUsed\"=\"Yes\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudtrail_notable_network_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudtrail\" eventName!=Get* AND eventName!=List* AND eventName!=Describe* AND eventName!=PutBucketAcl AND (eventName=\"*address*\" OR eventName=\"*gateway*\" OR eventName=\"*acl*\" OR eventName=\"*interface*\" OR eventName=\"*security*\" OR eventName=\"*route*\" OR eventName=\"*subnet*\" OR eventName=\"*vpc*\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_apigateway_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/ApiGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_autoscaling_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/AutoScaling\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_billing_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/Billing\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_dynamodb_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/DynamoDB\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ebs_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/EBS\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/EC2\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/EC2\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf_cpu",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudwatch\" source=\"*:AWS/EC2\" metric_name=\"CPU*\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf_memory",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudwatch\" source=\"*:AWS/EC2\" metric_name=\"Memory*\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf_network",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudwatch\" source=\"*:AWS/EC2\" metric_name=\"Network*\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf_storage",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudwatch\" source=\"*:AWS/EC2\" metric_name=\"Disk*\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_ec2_perf_vm",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:cloudwatch\" source=\"*:AWS/EC2\" metric_name=*",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_elasticache_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/ElastiCache\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_elasticmapreduce_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/ElasticMapReduce\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_elb_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" (source=\"*:AWS/ELB\" OR source=\"*:AWS/ApplicationELB\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_kinesis_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/Kinesis\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_lambda_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/Lambda\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_opsworks_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/OpsWorks\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_rds_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/RDS\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_redshift_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/Redshift\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_route53_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/Route53\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_s3_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/S3\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_sns_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/SNS\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_sqs_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/SQS\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_storagegateway_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/StorageGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_cloudwatch_swf_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:cloudwatch\" source=\"*:AWS/SWF\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_cloudtrail_trail",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::CloudTrail::Trail\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_customergateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::CustomerGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_eip",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::EIP\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_instance",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::Instance\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_internetgateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::InternetGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_networkacl",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::NetworkAcl\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_networkinterface",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::NetworkInterface\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_routetable",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::RouteTable\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_securitygroup",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::SecurityGroup\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_subnet",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::Subnet\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_volume",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::Volume\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_vpc",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::VPC\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_vpnconnection",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::VPNConnection\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_notification_ec2_vpngateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:notification\" configurationItem.resourceType=\"AWS::EC2::VPNGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_rule_compliancedetail_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:rule\" source=\"*:configRule:complianceDetail\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_rule_compliancesummary_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:rule\" source=\"*:configRule:complianceSummary\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_rule_evaluationstatus_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:rule\" source=\"*:configRule:evaluationStatus\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_rule_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config:rule\" source=\"*:configRule\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_cloudtrail_trail",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::CloudTrail::Trail\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_customergateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::CustomerGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_eip",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::EIP\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_instance",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::Instance\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_internetgateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::InternetGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_networkacl",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::NetworkAcl\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_networkinterface",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::NetworkInterface\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_routetable",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::RouteTable\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_securitygroup",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::SecurityGroup\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_subnet",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::Subnet\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_volume",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::Volume\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_vpc",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::VPC\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_vpnconnection",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::VPNConnection\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_config_snapshot_ec2_vpngateway",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:config\" resourceType=\"AWS::EC2::VPNGateway\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_description_ec2_instances",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:description\" source=\"*:ec2_instances\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_description_iam_users",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:description\" source=\"*:iam_users\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_ec2_inventory",
+"owner": "nobody",
+"priority": "1",
+"search": "(sourcetype=\"aws:description\" OR sourcetype=\"aws:metadata\") AND (source=\"*:ec2_instances\" OR source=\"*:ec2_volumes\" OR source=\"*:ec2_images\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_elb_accesslogs",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:elb:accesslogs\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_elb_accesslogs_web",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:elb:accesslogs\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_inspector_assessmentrun_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:inspector\" source=\"*:inspector:assessmentRun\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_inspector_finding_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:inspector\" source=\"*:inspector:finding\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_inspector_v2_network_reachability_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:inspector:v2:findings\" source=\"*:inspector:v2:finding\" category=\"NETWORK_REACHABILITY\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_inspector_v2_package_vulnerability_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:inspector:v2:findings\" source=\"*:inspector:v2:finding\" category=\"PACKAGE_VULNERABILITY\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_metadata_ec2_instances",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:metadata\" source=\"*:ec2_instances\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_metadata_iam_users",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=\"aws:metadata\" source=\"*:iam_users\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_s3_storage_accesslogs",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:s3:accesslogs\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "aws_s3_web_storage",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype= \"aws:s3\"",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "guard_duty_events",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=aws:cloudwatchlogs:guardduty OR sourcetype=aws:cloudwatch:guardduty",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "guard_duty_events_alert",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=aws:cloudwatchlogs:guardduty OR  (sourcetype=aws:cloudwatch:guardduty AND severity_id < 8 AND subject!=\"UnauthorizedAccess:EC2/*\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "guard_duty_events_ids",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=aws:cloudwatch:guardduty AND (severity_id >= 8 OR subject=\"UnauthorizedAccess:EC2/*\")",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "securityhub_events",
+"owner": "nobody",
+"priority": "1",
+"search": "(sourcetype=aws:securityhub:finding)",
+"sharing": "global",
+"tags": "\n          "
+},
+{
+"color": "none",
+"name": "vpcflow",
+"owner": "nobody",
+"priority": "1",
+"search": "sourcetype=aws:cloudwatchlogs:vpcflow AND (dest!=\"unknown\" AND action!=\"unknown\" AND app!=\"unknown\" AND protocol!=\"unknown\" AND src!=\"unknown\")",
+"sharing": "global",
+"tags": "\n          "
+}
+]
