@@ -9,15 +9,6 @@
 "sharing": "global"
 },
 {
-"fields_list": "resource_type,resource_role,src_type,dest_type",
-"filename": "aws_gd_resourceType_lookup.csv",
-"max_matches": "1",
-"min_matches": "0",
-"name": "aws-gd-resourceType_lookup",
-"owner": "nobody",
-"sharing": "global"
-},
-{
 "fields_list": "subject,category",
 "filename": "aws_firehose_kinesis_category.csv",
 "name": "aws_category",
